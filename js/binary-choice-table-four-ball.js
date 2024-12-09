@@ -102,7 +102,7 @@ var jsPsychBinaryChoiceTableFourBall = (function (jspsych) {
 
       
         // console.log('!!! display_stage');
-        console.log(trial.stimulus['F'], trial.stimulus['J'],trial.stimulus['rule'], trial.stimulus['random']);
+        console.log(trial.stimulus['F'], trial.stimulus['J'],trial.stimulus['rule'], trial.stimulus['random'], trial.payoffLR);
         console.log("this: ",this);
 
         display_element.innerHTML = '';
@@ -111,75 +111,85 @@ var jsPsychBinaryChoiceTableFourBall = (function (jspsych) {
         var table_stimulus;
         
 
-            table_stimulus = ` <div id = "balltable"; style="display: flex; flex-direction: column; align-items: center; height: 100vh; justify-content: space-between;">
+        switch (trial.payoffLR) {
+            case '0':
+              table_stimulus = ` <div id="ball-table" style="display: flex; 
+              justify-content: center; 
+              align-items: center; 
+              height: 100vh;
+              width: 100vw;">
+              <table class="b" style= "width: 95%; 
+              height: 95%;
+              border-collapse: collapse;
+              font-size: 10px;
+                    ">
+                    <colgroup>
+                    <col span="1" style="width: 50%; ">
+                    <col span="1" style="width: 50%; border-left: 1px gray solid;">
+                    </colgroup>
+                <tr style="height:10%;">
+                <th style="vertical-align: top; ">${trial.participant_ball_order ? 'Rule' : 'Bucket F'}</th>
+                <th style="vertical-align: top; ">${trial.participant_ball_order ? 'Ball' : 'Bucket J'}</th>
+                 </tr>
+                 <tr style="vertical-align: center; height: 40%;">
+                <td style="text-align: center; " id="up-left">${trial.participant_ball_order ? trial.stimulus['rule'] : trial.stimulus['F'].toFixed(0) } </td>
+                <td style="text-align: center;   ">${trial.participant_ball_order ? trial.stimulus['random'].toFixed(0) : trial.stimulus['J'].toFixed(0) }</td>
+                </tr>
+                 <tr style="vertical-align: center; height: 40%;">
+                <td style="text-align: center;  border-top: 1px gray solid;"> ${trial.participant_ball_order ? trial.stimulus['F'].toFixed(0) : trial.stimulus['rule']  }</td>     
+                <td style="text-align: center;   border-top: 1px gray solid;"> ${trial.participant_ball_order ? trial.stimulus['J'].toFixed(0) : trial.stimulus['random'].toFixed(0) } </td>
+                </tr>
+                <tr style="height:10%;">
+                <th style="vertical-align: bottom;  height: 25px;">${trial.participant_ball_order ? 'Bucket F' : 'Rule'}</th>
+                <th style="vertical-align: bottom; ">${trial.participant_ball_order ? 'Bucket J' : 'Ball'}</th>
+                </tr>
                   
-                      <!-- Conditional Placement: Ball on top or bottom -->
-                      ${participant_ball_order ? `
-                          <div style="width: 100%; display: table; justify-content: center; margin-top: 5vh;">
-                              <div style="border: none; padding: 10px; text-align: center;">
-                                  <div style="font-size: 10px; font-weight: bold;  margin-bottom: 10vh;">Ball</div>
-                                  <div style="font-size: 10px;">${trial.stimulus['random'].toFixed(0)}</div> <!-- Dynamic ball number -->
-                              </div>
-                          </div>
-                      ` : `
-                          <div style="width: 100%; display: table; justify-content: center; margin-top: 5vh;">
-                              <div style="border: none; padding: 10px; text-align: center;">
-                                  <div style="font-size: 10px; font-weight: bold; margin-bottom: 10vh;">Rule</div>
-                                  <div style="font-size: 10px;">${trial.stimulus['rule']}</div> <!-- Dynamic rule -->
-                              </div>
-                          </div>
-                      `}
-                        
-                      <!-- Middle Section (Table) -->
-                      <div style="width: 100%; display: table; table-layout: fixed;">
-                          <div style="display: table-row; height: 150px;">
-                              <!-- Column for F -->
-                              <div style="display: table-cell; text-align: center; vertical-align: middle; border: none;">
-                                  <div>
-                                      <div style="font-size: 10px; font-weight: bold;">Bucket F</div>
-                                  </div>
-                              </div>
-                                                      <!-- Column for F -->
-                              <div style="display: table-cell; text-align: left; vertical-align: middle; border: none;">
-                                  <div>
-                                      <div style="font-size: 10px;">${trial.stimulus['F'].toFixed(0)}</div>
-                                  </div>
-                              </div>
-                              <!-- Column for J -->
-                              <div style="display: table-cell; text-align: right; vertical-align: middle; border: none;">
-                                  <div>
-                                      <div style="font-size: 10px;">${trial.stimulus['J'].toFixed(0)}</div>
-                                  </div>
-                              </div>
-                              <!-- Column for J -->
-                              <div style="display: table-cell; text-align: center; vertical-align: middle; border: none;">
-                                  <div>
-                                      <div style="font-size: 10px; font-weight: bold;">Bucket J</div>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                    
-                      <!-- Conditional Placement: Rule on top or bottom -->
-                      ${!participant_ball_order ? `
-                          <div style="width: 100%; display: table; justify-content: center; margin-bottom: 5vh;">
-                              <div style="border: none; padding: 10px; text-align: center;">
-                                  <div style="font-size: 10px; margin-bottom: 10vh !important;">${trial.stimulus['random'].toFixed(0)}</div> <!-- Dynamic ball number -->
-                                  <div style="font-size: 10px; font-weight: bold !important;">Ball</div>
-                              </div>
-                          </div>
-                      ` : `
-                          <div style="width: 100%; display: table; justify-content: center; margin-bottom: 5vh;">
-                              <div style="border: none; padding: 10px; text-align: center;">
-                                  <div style="font-size: 10px; margin-bottom: 10vh;">${trial.stimulus['rule']}</div> <!-- Dynamic rule -->
-                                  <div style="font-size: 10px; font-weight: bold;">Rule</div>
-                              </div>
-                          </div>
-                      `}
-                        
-                  </div>
-          `;
-    
+                    </table>
+          
+              </div>
+            `;
+              break;
+            case '1':
+              table_stimulus = ` <div id="ball-table" style="display: flex; 
+              justify-content: center; 
+              align-items: center; 
+              height: 100vh;
+              width: 100vw;">
+              <table class="b" style= "width: 95%; 
+              height: 95%;
+              border-collapse: collapse;
+              font-size: 10px;
+                    ">
+                    <colgroup>
+                    <col span="1" style="width: 50%; ">
+                    <col span="1" style="width: 50%; border-left: 1px gray solid;">
+                    </colgroup>
+                <tr style="height:10%;">
+                <th style="vertical-align: top; ">${trial.participant_ball_order ? 'Ball' : 'Bucket F'}</th>
+                <th style="vertical-align: top; ">${trial.participant_ball_order ? 'Rule' : 'Bucket J'}</th>
+                 </tr>
+                 <tr style="vertical-align: center; height: 40%;">
+                <td style="text-align: center; " id="up-left">${trial.participant_ball_order ? trial.stimulus['random'].toFixed(0) : trial.stimulus['F'].toFixed(0) } </td>
+                <td style="text-align: center;   ">${trial.participant_ball_order ? trial.stimulus['rule'] : trial.stimulus['J'].toFixed(0) }</td>
+                </tr>
+                 <tr style="vertical-align: center; height: 40%;">
+                <td style="text-align: center;  border-top: 1px gray solid;"> ${trial.participant_ball_order ? trial.stimulus['F'].toFixed(0) : trial.stimulus['random'].toFixed(0)  }</td>     
+                <td style="text-align: center;   border-top: 1px gray solid;"> ${trial.participant_ball_order ? trial.stimulus['J'].toFixed(0) : trial.stimulus['rule'] } </td>
+                </tr>
+                <tr style="height:10%;">
+                <th style="vertical-align: bottom;  height: 25px;">${trial.participant_ball_order ? 'Bucket F' : 'Ball'}</th>
+                <th style="vertical-align: bottom; ">${trial.participant_ball_order ? 'Bucket J' : 'Rule'}</th>
+                </tr>
+                  
+                    </table>
+          
+              </div>
+            `;
+              break;
+            default:
+              console.error('Invalid value of LR: ' + trial.payoffLR);
+          }
+          
         
         var new_html = '<div id="jspsych-html-keyboard-response-stimulus">' + table_stimulus + "</div>";
           
@@ -222,7 +232,8 @@ var jsPsychBinaryChoiceTableFourBall = (function (jspsych) {
             F: trial.stimulus['F'], 
             J: trial.stimulus['J'], 
             Rule: trial.stimulus['rule'],
-            Random: trial.stimulus['random']
+            Random: trial.stimulus['random'],
+            payoffLR: participant_LR_order,
           };
           console.log("in end binary: ", this);
   

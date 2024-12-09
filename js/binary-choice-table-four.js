@@ -284,7 +284,8 @@ var jsPsychBinaryChoiceTableFour = (function (jspsych) {
             o1: trial.stimulus['o1'],
             o2: trial.stimulus['o2'],
             rule: trial.stimulus['rule'], 
-            random: trial.stimulus['random']
+            random: trial.stimulus['random'], 
+            payoffLMR: participant_LMR_order,
           };
           console.log("in end binary: ", this);
   

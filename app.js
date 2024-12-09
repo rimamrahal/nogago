@@ -13,10 +13,11 @@ const S3_BUCKET = process.env.S3_BUCKET;
 const s3 = new aws.S3({
     accessKeyId: process.env.AWS_ACCESS_KEY,
     secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
+    region: 'eu-central-1'
   });
 
 
-aws.config.region = 'eu-central-1';
+aws.config.region =  v;
 
 //var saveDropbox = mymods.saveDropbox;
 
@@ -107,7 +108,7 @@ app.post("/data", function (request, response) {
     foldername = id;
     console.log("foldername: ", foldername);
     console.log("file: ", filename);
-    filename = "philippines/"+foldername+"/"+filename;
+    filename = "norms/"+foldername+"/"+filename;
     data = JSON.stringify(data);
     
     var data_s3 = {
@@ -121,9 +122,9 @@ app.post("/data", function (request, response) {
     s3.upload(data_s3, function (err, data) {
         if (err) {
             console.log(err);
-            console.log('Error uploading data: ', data);
+            response.status(500).send('Error uploading data. Please copy/paste and send to rahal@coll.mpg.de: ', data);
         } else {
-            console.log('succesfully uploaded!!!');
+            response.status(200).send('Data succesfully uploaded!');
         }
     });
 }

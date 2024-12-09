@@ -23,7 +23,12 @@
         '../img/comp_checkG_YouTop_GroupBottom2.png', 
         '../img/comp_checkG_YouBottom_GroupTop2.png', 
         '../img/instruct1.png',
-        '../img/instruct0.png']
+        '../img/instruct0.png', 
+        '../img/ball_LR1_ballorder0.png',
+        '../img/ball_LR1_ballorder1.png',
+        '../img/ball_LR0_ballorder0.png',
+        '../img/ball_LR0_ballorder1.png'
+       ]
     };
 
     var fixation_duration = 1000;
@@ -82,16 +87,20 @@
     var participant_otherinfostimuli_list = ['rule_top', "rule_down"];
     var participant_ball_list = ['rule_top', "rule_down"];
     var participant_LMR_list = ['0','1','2'];
+    var participant_LR_list = ['0','1'];
     var participant_payoff_order = (jsPsych.randomization.shuffle(participant_stimuli_list)[1] == 'you_top');
     var participant_otherinfo_order = (jsPsych.randomization.shuffle(participant_otherinfostimuli_list)[1] == 'rule_top');
     var participant_ball_order = (jsPsych.randomization.shuffle(participant_ball_list)[1] == 'rule_top');
     var participant_LMR_order = (jsPsych.randomization.shuffle(participant_LMR_list)[1]);
+    var participant_LR_order = (jsPsych.randomization.shuffle(participant_LR_list)[1]);
 
     console.log("participant_id: " + subject_id);
     console.log("participant_payoff_order: " + participant_payoff_order);
     console.log("participant_otherinfo_order: " + participant_otherinfo_order);
     console.log("participant_ball_order:" + participant_ball_order);
     console.log("participant_LMR_order: " + participant_LMR_order);
+    console.log("participant_LR_order: " + participant_LR_order);
+    
 
 
     stimuli_data = jsPsych.randomization.shuffle(stimuli_data);
@@ -137,17 +146,17 @@ var calibration_instructions = {
          <font size = 4px font color = "magenta">      <p> We now set up your webcam for tracking your eyes.</p>
          <p> You need to help the camera get a good view of your eyes. To do that, it's <b>IMPORTANT</b> that you follow these rules: <br/> <br/> <br/></font>
          <img height="200px" width="1000px" src="../img/instruct1.png"><br/>
-         <br><br/>
+         <br/>
         Keep lights in front of you. No windows or lamps behind you. 
-         <br><br/>
+         <br/>
          On the next page, you will start the eye tracking. Use the rules above.                
         <br><br/>
          <div>
             After that, you will teach the computer to track your eyes.<br/>
             You will see a <b>black dot</b> on the screen. Look directly at each dot until it goes away.<br/>
             Then, <b>move your eyes</b> to look at the next dot, and repeat.<br/>
-      <br>
-         <font   >Press <b>SPACE</b> to start eye tracking! </font></div
+      <br/>
+         <font   >Press <b>SPACE</b> to start eye tracking! </font></div>
   `,
   choices: [' '], 
   
@@ -560,312 +569,115 @@ const ballintro = {
   choices: ['Next'],
 }
 
-const ballcheck1 = {
-type: jsPsychHtmlButtonResponse,
-stimulus: `
-  <div style="display: flex; flex-direction: column; align-items: center; height: 70vh; justify-content: space-between; padding: 10px 0; box-sizing: border-box;">
-      <div style="font-size: 20px;">How much would you earn by placing the ball 99 into bucket J?</div> <!-- Question -->
-      
-      <!-- Conditional Placement: Ball on top or bottom -->
-      ${participant_ball_order ? `
-          <div style="width: 50%; display: table; justify-content: center; margin-top: 5vh; border-top: 2px solid white;">
-              <div style="border: none; padding: 10px; text-align: center;">
-                  <div style="font-size: 10px; font-weight: bold; margin-bottom: 5vh;">Ball</div>
-                  <div style="font-size: 10px;">99</div> <!-- Dynamic ball number -->
-              </div>
-          </div>
-      ` : `
-          <div style="width: 50%; display: table; justify-content: center; margin-top: 5vh; border-top: 2px solid white;">
-              <div style="border: none; padding: 10px; text-align: center;">
-                  <div style="font-size: 10px; font-weight: bold; margin-bottom: 5vh;">Rule</div>
-                  <div style="font-size: 10px;">F</div> <!-- Dynamic rule -->
-              </div>
-          </div>
-      `}
-      
-      <!-- Middle Section (Table) -->
-      <div style="width: 50%; display: table; table-layout: fixed;">
-          <div style="display: table-row; height: 80px;">
-              <!-- Column for F -->
-              <div style="display: table-cell; text-align: center; vertical-align: middle; border: none;">
-                  <div>
-                      <div style="font-size: 10px; font-weight: bold;">Bucket F</div>
-                  </div>
-              </div>
-              <!-- Column for F -->
-              <div style="display: table-cell; text-align: left; vertical-align: middle; border: none;">
-                  <div>
-                      <div style="font-size: 10px;">1</div>
-                  </div>
-              </div>
-              <!-- Column for J -->
-              <div style="display: table-cell; text-align: right; vertical-align: middle; border: none;">
-                  <div>
-                      <div style="font-size: 10px;">1000</div>
-                  </div>
-              </div>
-              <!-- Column for J -->
-              <div style="display: table-cell; text-align: center; vertical-align: middle; border: none;">
-                  <div>
-                      <div style="font-size: 10px; font-weight: bold;">Bucket J</div>
-                  </div>
-              </div>
-          </div>
-      </div>
-      
-      <!-- Conditional Placement: Rule on top or bottom -->
-      ${!participant_ball_order ? `
-          <div style="width: 50%; display: table; justify-content: center; margin-bottom: 5vh; border-bottom: 2px solid white;">
-              <div style="border: none; padding: 10px; text-align: center;">
-                  <div style="font-size: 10px; margin-bottom: 5vh !important;">99</div> <!-- Dynamic ball number -->
-                  <div style="font-size: 10px; font-weight: bold !important;">Ball</div>
-              </div>
-          </div>
-      ` : `
-          <div style="width: 50%; display: table; justify-content: center; margin-bottom: 5vh; border-bottom: 2px solid white;">
-              <div style="border: none; padding: 10px; text-align: center;">
-                  <div style="font-size: 10px; margin-bottom: 5vh;">F</div> <!-- Dynamic rule -->
-                  <div style="font-size: 10px; font-weight: bold;">Rule</div>
-              </div>
-          </div>
-      `}
+var imgSrcball;
+var ballintro2 = {
+  type: jsPsychHtmlKeyboardResponse,
+  stimulus: function() {
+    if (participant_ball_order == false && participant_LR_order === '0') {
+      imgSrcball = "../img/ball_LR0_ballorder0.png";
+    } else if (participant_ball_order == false && participant_LR_order === '1') {
+      imgSrcball = "../img/ball_LR1_ballorder0.png";
+    }  
+    else if (participant_ball_order == true && participant_LR_order === '1') {
+      imgSrcball = "../img/ball_LR1_ballorder1.png";
+    } else if (participant_ball_order == true && participant_LR_order  === '0') {
+      imgSrcball = "../img/ball_LR0_ballorder1.png";
+    }  
+    return `<div style="width: 80%; margin: auto; text-align: center;">
+  <p>Here is an example of how the decision tasks will look. </br> </p>
+  <img height="200px" src="${imgSrcball}"><br/>
+  <p> Each box shows you information about the decision:
+  <div style="width: 50vw; margin: auto; text-align:left;">
+  <ul>
+  <li>How many points you get if you choose Buckt F (left) or J (right).</li>
+  <li>If rule is to choose F(left) or J (right). </li>
+  <li>What random number the ball has.</li>
+  </ul></p> 
+  </div> </br> </br>
+
+  Press <b>SPACE</b> to continue!</p>
   </div>
-`,
-choices: ['1000', '99', '1'], 
-data: {
-  name: 'ballcheck1' 
-},
-}
+  `;
+  },
+  choices: [' ']
+};
 
-const feedback_ballcheck1 = {
-type: jsPsychHtmlButtonResponse,
-stimulus: `
-  <div style="display: flex; flex-direction: column; align-items: center; height: 70vh; justify-content: space-between; padding: 10px 0; box-sizing: border-box;">
-      <div style="font-size: 20px;">In this example, by placing the ball 99 into bucket J, you would earn 1000.</div> <!-- Question -->
-      
-      <!-- Conditional Placement: Ball on top or bottom -->
-      ${participant_ball_order ? `
-          <div style="width: 50%; display: table; justify-content: center; margin-top: 5vh; border-top: 2px solid white;">
-              <div style="border: none; padding: 10px; text-align: center;">
-                  <div style="font-size: 10px; font-weight: bold; margin-bottom: 5vh;">Ball</div>
-                  <div style="font-size: 10px;">99</div> <!-- Dynamic ball number -->
-              </div>
-          </div>
-      ` : `
-          <div style="width: 50%; display: table; justify-content: center; margin-top: 5vh; border-top: 2px solid white;">
-              <div style="border: none; padding: 10px; text-align: center;">
-                  <div style="font-size: 10px; font-weight: bold; margin-bottom: 5vh;">Rule</div>
-                  <div style="font-size: 10px;">F</div> <!-- Dynamic rule -->
-              </div>
-          </div>
-      `}
-      
-      <!-- Middle Section (Table) -->
-      <div style="width: 50%; display: table; table-layout: fixed;">
-          <div style="display: table-row; height: 80px;">
-              <!-- Column for F -->
-              <div style="display: table-cell; text-align: center; vertical-align: middle; border: none;">
-                  <div>
-                      <div style="font-size: 10px; font-weight: bold;">Bucket F</div>
-                  </div>
-              </div>
-              <!-- Column for F -->
-              <div style="display: table-cell; text-align: left; vertical-align: middle; border: none;">
-                  <div>
-                      <div style="font-size: 10px;">1</div>
-                  </div>
-              </div>
-              <!-- Column for J -->
-              <div style="display: table-cell; text-align: right; vertical-align: middle; border: none;">
-                  <div>
-                      <div style="font-size: 10px;">1000</div>
-                  </div>
-              </div>
-              <!-- Column for J -->
-              <div style="display: table-cell; text-align: center; vertical-align: middle; border: none;">
-                  <div>
-                      <div style="font-size: 10px; font-weight: bold;">Bucket J</div>
-                  </div>
-              </div>
-          </div>
+
+// QUESTION 1
+var ballcheck1 = {
+  type: jsPsychHtmlButtonResponse,
+  stimulus: function() {
+    return `<div style="max-width: 80%; margin:auto; text-align: center;"> 
+       
+      <img height="200px" src="${imgSrcball}"><br/>
+      <br>
       </div>
-      
-      <!-- Conditional Placement: Rule on top or bottom -->
-      ${!participant_ball_order ? `
-          <div style="width: 50%; display: table; justify-content: center; margin-bottom: 5vh; border-bottom: 2px solid white;">
-              <div style="border: none; padding: 10px; text-align: center;">
-                  <div style="font-size: 10px; margin-bottom: 5vh !important;">99</div> <!-- Dynamic ball number -->
-                  <div style="font-size: 10px; font-weight: bold !important;">Ball</div>
-              </div>
-          </div>
-      ` : `
-          <div style="width: 50%; display: table; justify-content: center; margin-bottom: 5vh; border-bottom: 2px solid white;">
-              <div style="border: none; padding: 10px; text-align: center;">
-                  <div style="font-size: 10px; margin-bottom: 5vh;">F</div> <!-- Dynamic rule -->
-                  <div style="font-size: 10px; font-weight: bold;">Rule</div>
-              </div>
-          </div>
-      `}
-  </div>
-`,
-choices: ['OK I understand'], 
-}
+      <p>Imagine you put the ball in Bucket J (right). </br>
+      How many points will you get? Click on the answer!</p>
+      `
+  }, 
+  choices: ['1000', '99', '1'],
+  required: true,
+  data: {
+    name: 'ballcheck1'
+  }
+};
 
-
-const ballcheck2 = {
-type: jsPsychHtmlButtonResponse,
-stimulus: `
-  <div style="display: flex; flex-direction: column; align-items: center; height: 70vh; justify-content: space-between; padding: 10px 0; box-sizing: border-box; margin-bottom: 10px;">
-       <div style="font-size: 20px;">In this example, the rule is to put the ball in bucket ______ .</div> <!-- Question -->
-      
-      <!-- Conditional Placement: Ball on top or bottom -->
-      ${participant_ball_order ? `
-          <div style="width: 50%; display: table; justify-content: center; margin-top: 5vh; border-top: 2px solid white;">
-              <div style="border: none; padding: 10px; text-align: center;">
-                  <div style="font-size: 10px; font-weight: bold; margin-bottom: 5vh;">Ball</div>
-                  <div style="font-size: 10px;">99</div> <!-- Dynamic ball number -->
-              </div>
-          </div>
-      ` : `
-          <div style="width: 50%; display: table; justify-content: center; margin-top: 5vh; border-top: 2px solid white;">
-              <div style="border: none; padding: 10px; text-align: center;">
-                  <div style="font-size: 10px; font-weight: bold; margin-bottom: 5vh;">Rule</div>
-                  <div style="font-size: 10px;">F</div> <!-- Dynamic rule -->
-              </div>
-          </div>
-      `}
-      
-      <!-- Middle Section (Table) -->
-      <div style="width: 50%; display: table; table-layout: fixed; overflow-x: auto; overflow-y: auto;">
-          <div style="display: table-row; height: 80px;">
-              <!-- Column for F -->
-              <div style="display: table-cell; text-align: center; vertical-align: middle; border: none;">
-                  <div>
-                      <div style="font-size: 10px; font-weight: bold;">Bucket F</div>
-                  </div>
-              </div>
-              <!-- Column for F -->
-              <div style="display: table-cell; text-align: left; vertical-align: middle; border: none;">
-                  <div>
-                      <div style="font-size: 10px;">1</div>
-                  </div>
-              </div>
-              <!-- Column for J -->
-              <div style="display: table-cell; text-align: right; vertical-align: middle; border: none;">
-                  <div>
-                      <div style="font-size: 10px;">1000</div>
-                  </div>
-              </div>
-              <!-- Column for J -->
-              <div style="display: table-cell; text-align: center; vertical-align: middle; border: none;">
-                  <div>
-                      <div style="font-size: 10px; font-weight: bold;">Bucket J</div>
-                  </div>
-              </div>
-          </div>
+var feedback_ballcheck1 = {
+  type: jsPsychHtmlButtonResponse,
+  stimulus: function() {
+    return `<div style="max-width: 80%; margin:auto; text-align: center;"> 
+       
+      <img height="200px" src="${imgSrcball}"><br/>
+      <br>
       </div>
-      
-      <!-- Conditional Placement: Rule on top or bottom -->
-      ${!participant_ball_order ? `
-          <div style="width: 50%; display: table; justify-content: center; margin-bottom: 5vh; border-bottom: 2px solid white;">
-              <div style="border: none; padding: 10px; text-align: center;">
-                  <div style="font-size: 10px; margin-bottom: 5vh !important;">99</div> <!-- Dynamic ball number -->
-                  <div style="font-size: 10px; font-weight: bold !important;">Ball</div>
-              </div>
-          </div>
-      ` : `
-          <div style="width: 50%; display: table; justify-content: center; margin-bottom: 5vh; border-bottom: 2px solid white;">
-              <div style="border: none; padding: 10px; text-align: center;">
-                  <div style="font-size: 10px; margin-bottom: 5vh;">F</div> <!-- Dynamic rule -->
-                  <div style="font-size: 10px; font-weight: bold;">Rule</div>
-              </div>
-          </div>
-      `}
-      
-     
-  </div>
-`,
-choices: ['F', 'J'], 
-data: {
-  name: 'ballcheck2' 
-},
-}
+      <p>In this example, by putting the ball 99 into Bucket J, you would earn 1000.</p>
+      `
+  }, 
+  choices: ['OK I understand'],
+  required: true,
+  data: {
+    name: 'feedback_ballcheck1'
+  }
+};
 
-
-
-const feedback_ballcheck2 = {
-type: jsPsychHtmlButtonResponse,
-stimulus: `
-  <div style="display: flex; flex-direction: column; align-items: center; height: 70vh; justify-content: space-between; padding: 10px 0; box-sizing: border-box;">
-      <div style="font-size: 20px;">In this example, the rule is to put the ball in Bucket F.</div> <!-- Question -->
-      
-      <!-- Conditional Placement: Ball on top or bottom -->
-      ${participant_ball_order ? `
-          <div style="width: 50%; display: table; justify-content: center; margin-top: 5vh; border-top: 2px solid white;">
-              <div style="border: none; padding: 10px; text-align: center;">
-                  <div style="font-size: 10px; font-weight: bold; margin-bottom: 5vh;">Ball</div>
-                  <div style="font-size: 10px;">99</div> <!-- Dynamic ball number -->
-              </div>
-          </div>
-      ` : `
-          <div style="width: 50%; display: table; justify-content: center; margin-top: 5vh; border-top: 2px solid white;">
-              <div style="border: none; padding: 10px; text-align: center;">
-                  <div style="font-size: 10px; font-weight: bold; margin-bottom: 5vh;">Rule</div>
-                  <div style="font-size: 10px;">F</div> <!-- Dynamic rule -->
-              </div>
-          </div>
-      `}
-      
-      <!-- Middle Section (Table) -->
-      <div style="width: 50%; display: table; table-layout: fixed;">
-          <div style="display: table-row; height: 80px;">
-              <!-- Column for F -->
-              <div style="display: table-cell; text-align: center; vertical-align: middle; border: none;">
-                  <div>
-                      <div style="font-size: 10px; font-weight: bold;">Bucket F</div>
-                  </div>
-              </div>
-              <!-- Column for F -->
-              <div style="display: table-cell; text-align: left; vertical-align: middle; border: none;">
-                  <div>
-                      <div style="font-size: 10px;">1</div>
-                  </div>
-              </div>
-              <!-- Column for J -->
-              <div style="display: table-cell; text-align: right; vertical-align: middle; border: none;">
-                  <div>
-                      <div style="font-size: 10px;">1000</div>
-                  </div>
-              </div>
-              <!-- Column for J -->
-              <div style="display: table-cell; text-align: center; vertical-align: middle; border: none;">
-                  <div>
-                      <div style="font-size: 10px; font-weight: bold;">Bucket J</div>
-                  </div>
-              </div>
-          </div>
+// QUESTION 2
+var ballcheck2 = {
+  type: jsPsychHtmlButtonResponse,
+  stimulus: function() {
+    return `<div style="max-width: 80%; margin:auto; text-align: center;"> 
+       
+      <img height="200px" src="${imgSrcball}"><br/>
+      <br>
       </div>
-      
-      <!-- Conditional Placement: Rule on top or bottom -->
-      ${!participant_ball_order ? `
-          <div style="width: 50%; display: table; justify-content: center; margin-bottom: 5vh; border-bottom: 2px solid white;">
-              <div style="border: none; padding: 10px; text-align: center;">
-                  <div style="font-size: 10px; margin-bottom: 5vh !important;">99</div> <!-- Dynamic ball number -->
-                  <div style="font-size: 10px; font-weight: bold !important;">Ball</div>
-              </div>
-          </div>
-      ` : `
-          <div style="width: 50%; display: table; justify-content: center; margin-bottom: 5vh; border-bottom: 2px solid white;">
-              <div style="border: none; padding: 10px; text-align: center;">
-                  <div style="font-size: 10px; margin-bottom: 5vh;">F</div> <!-- Dynamic rule -->
-                  <div style="font-size: 10px; font-weight: bold;">Rule</div>
-              </div>
-          </div>
-      `}
-  </div>
-`,
-choices: ['OK I understand'], 
-}
+      <p>Finish the sentence:</br>
+      In this example, the rule is to put the ball in Bucket ______ .</p>
+      `
+  }, 
+  choices: ['F', 'J'],
+  required: true,
+  data: {
+    name: 'ballcheck2'
+  }
+};
+
+var feedback_ballcheck2 = {
+  type: jsPsychHtmlButtonResponse,
+  stimulus: function() {
+    return `<div style="max-width: 80%; margin:auto; text-align: center;"> 
+       
+      <img height="200px" src="${imgSrcball}"><br/>
+      <br>
+      </div>
+      <p>In this example, the rule is to put the ball in Bucket F.</p>
+      `
+  }, 
+  choices: ['OK I understand'],
+  required: true,
+  data: {
+    name: 'feedback_ballcheck2'
+  }
+};
 
 
 ///////
@@ -873,7 +685,7 @@ choices: ['OK I understand'],
 ///////
 
 // BUTTON REMINDERS
-var ballintro2 = {
+var ballintro3 = {
   type: jsPsychHtmlKeyboardResponse,
   stimulus: `
   <div style="width: 80%; margin: auto;">
@@ -881,9 +693,9 @@ var ballintro2 = {
  <br/>
   Before each round, a "+" will appear on the screen. Look at it until it goes away.  <br/><br/>
   
-  Press <b><font color='magenta'>F key</font></b> on keyboard to choose <b><font color='magenta'>Bucket F</font></b>.
+  Press <b><font color='magenta'>F key</font></b> on the keyboard to choose <b><font color='magenta'>Bucket F</font></b>.
  <br>
- Press <b><font color='magenta'>J key </font></b> on keyboard to choose <b><font color='magenta'>Bucket J</font></b>.
+ Press <b><font color='magenta'>J key </font></b> on the keyboard to choose <b><font color='magenta'>Bucket J</font></b>.
              <br><br/></p>
 
   <p> Press <b>SPACE</b> for three example tasks!</p></div>
@@ -908,6 +720,7 @@ var ball_prac_choice = {
       choices: ["F", "J"],
       realOrPrac: false,
       participant_ball_order: participant_ball_order, 
+      payoffLR: participant_LR_order,
       on_finish: () => ball_prac_choice_count++,
       extensions: [
     {type: jsPsychExtensionWebgazer, params: {targets: ['#up-left', '#bottom-right']}}  
@@ -972,7 +785,8 @@ var ball_prac_choice = {
         stimulus: () => ball_data_b1[ball_real_choice_counts%10],
         choices: ["F", "J"],
         realOrPrac: true,
-        participant_ball_order: participant_ball_order, 
+        participant_ball_order: participant_ball_order,
+        payoffLR: participant_LR_order, 
         on_start: function(trial) {
           document.body.classList.add('no-scroll');
         },
@@ -993,7 +807,7 @@ var ball_prac_choice = {
 
   var donecursor = {
     type: jsPsychHtmlKeyboardResponse,
-    stimulus: ` <p>Done! You can move around freely again. The webcam will not track your gaze anymore.</p>
+    stimulus: ` <p>Done! You can move around freely again. The webcam will not track your gaze now.</p>
       <p>Press SPACE to move on.</p>
     `,
     choices: [' '],
@@ -1544,247 +1358,249 @@ var feedback = {
         timeline.push(preload);
         timeline.push(start_exp_survey_trial);
         timeline.push(fullscreenEnter);
-
-        // Screening questions
-        timeline.push(glasses_screening);
-
-        // Webcam test
-        timeline.push(webcam_test_instructions);
-        timeline.push(calibration_instructions);
-        timeline.push(init_camera);
-        timeline.push(calibration);
-
-          // social norm espousal
-        timeline.push(SNE_pageone);
-        timeline.push(SNE_pagetwo);
-        timeline.push(SNE_pagethree);
-        timeline.push(SNE_pagefour);
-
-        // SVO
-        timeline.push(SVO_instruction);
-        timeline.push(SVO_trial_likert1);
-        timeline.push(SVO_trial_likert2);
-
-        // balls
-        timeline.push(ballintro);
-
-        timeline.push({
-            timeline: [ballcheck1],
-            on_finish: function(data) {
-                jsPsych.data.addProperties({ ballcheck1_response: data.response}); // Log response
-            }
-        });
-        timeline.push({
-            type: jsPsychHtmlButtonResponse,
-            stimulus: function() {
-                // Retrieve the response from the previous trial
-                const response = jsPsych.data.get().last(1).values()[0].ballcheck1_response;
-                
-                // Change the displayed text based on the response
-                if (response === 0) {
-                    return `<p>You selected the correct response: 1000!
-                        <br><br> Please look at the example and explanation again on the next page to familiarize yourself with the display.</p>`;
-                } else if (response === 1) {
-                    return `<p>You selected 99. That was not the right answer. 
-                        <br><br> You indicated the random number assosciated with the ball. 
-                        <br> The payment assosciated with option J is displayed directly next to the letter J on the right of the screen. 
-                        <br><br> Please look at the example and explanation again on the next page to familiarize yourself with the display.</p>`;
-                } else if (response === 2) {
-                    return `<p>You selected 1. That was not the right answer.
-                            <br><br> You indicated the payment for putting the ball in bucket F.
-                            <br> The payment assosciated with option J is displayed directly next to the letter J on the right of the screen. 
-                            <br><br> Please look at the example and explanation again on the next page to familiarize yourself with the display.</p>`;
-                } else {
-                    return `<p>Invalid response. Please try again.</p>`;
-                }
-            },
-            choices: ['Next'], // Just a button to proceed
-        });
-        timeline.push(feedback_ballcheck1);
-        timeline.push({
-            timeline: [ballcheck2],
-            on_finish: function(data) {
-                jsPsych.data.addProperties({ ballcheck2_response: data.response}); // Log response
-            }
-        });
-        timeline.push({
-            type: jsPsychHtmlButtonResponse,
-            stimulus: function() {
-                // Retrieve the response from the previous trial
-                const response = jsPsych.data.get().last(1).values()[0].ballcheck2_response;
-                
-                // Change the displayed text based on the response
-                if (response === 0) {
-                    return `<p>You selected the correct response: F!
-                        <br><br> Please look at the example and explanation again on the next page to familiarize yourself with the display.</p>`;
-                } else if (response === 1) {
-                    return `<p>You selected J. That was not the right answer. 
-                        <br><br> The rule is displayed in the center of the screen. It tells you to put the ball in bucket F or J.  
-                        <br><br> Please look at the example and explanation again on the next page to familiarize yourself with the display.</p>`;
-                } else {
-                    return `<p>Invalid response. Please try again.</p>`;
-                }
-            },
-            choices: ['Next'], // Just a button to proceed
-        });
-        timeline.push(feedback_ballcheck2);
-// BALL GAME
-        timeline.push(calibration_instructions);
-        timeline.push(init_camera);
-        timeline.push(calibration);
-        timeline.push(validation_instructions);
-        timeline.push(validation);
-        timeline.push(recalibrate);
-        timeline.push(ballintro2);
-        timeline.push(ball_prac_choice);
-        timeline.push(EnterRealChoice);
-        timeline.push(ball_real_choice);
-        timeline.push(donecursor);
-
-
-      // Dictator game
-        timeline.push(choice_instructions1);
-        timeline.push(choice_instructions2);
-        timeline.push(choice_instructions3);
-
-        timeline.push({
-            timeline: [comprehension_check1],
-            on_finish: function(data) {
-                jsPsych.data.addProperties({ comprehension_check1_response: data.response}); // Log response
-            }
-        });
-
-        timeline.push({
-            type: jsPsychHtmlButtonResponse,
-            stimulus: function() {
-                // Retrieve the response from the previous trial
-                const response = jsPsych.data.get().last(1).values()[0].comprehension_check1_response;
-                
-                // Change the displayed text based on the response
-                if (response === 0) {
-                    return `<p>You selected the correct response: 59!
-                        <br><br> Please look at the example and explanation again on the next page to familiarize yourself with the display.</p>`;
-                } else if (response === 1) {
-                    return `<p>You selected 56. That was not the right answer. 
-                        <br><br> You indicated the points the other person gets if you chose Option J. We were looking for what they get if you chose Option F.
-                        <br> The points for the other person when you choose Option F are displayed in the box that says "Option F: Other gets". 
-                        <br><br> Please look at the example and explanation again on the next page to familiarize yourself with the display.</p>`;
-                } else if (response === 2) {
-                    return `<p>You selected 22. That was not the right answer.
-                            <br><br> You indicated the points you would get if you chose Option F. We were looking for what the other person would get.
-                            <br> The points for the other person when you choose Option F are displayed in the box that says "Option F: Other gets".
-                            <br><br> Please look at the example and explanation again on the next page to familiarize yourself with the display.</p>`;
-                } else if (response === 3) {
-                    return `<p>You selected 15. That was not the right answer.
-                            <br><br> You indicated the points you get if you chose Option J. We were looking for what the other player would get if you chose Option F.
-                            <br> The points for the other person when you choose Option F are displayed in the box that says "Option F: Other gets".
-                            <br><br> Please look at the example and explanation again on the next page to familiarize yourself with the display.</p>`;
-                } else {
-                    return `<p>Invalid response. Please try again.</p>`;
-                }
-            },
-            choices: ['Next'], // Just a button to proceed
-        });
-        timeline.push(comprehension_feedback1);
-        timeline.push({
-            timeline: [comprehension_check2],
-            on_finish: function(data) {
-                jsPsych.data.addProperties({ comprehension_check2_response: data.response}); // Log response
-            }
-        });
-
-        timeline.push({
-            type: jsPsychHtmlButtonResponse,
-            stimulus: function() {
-                // Retrieve the response from the previous trial
-                const response = jsPsych.data.get().last(1).values()[0].comprehension_check2_response;
-                
-                // Change the displayed text based on the response
-                if (response === 0) {
-                    return `<p>You selected the correct response: F!
-                        <br><br> Please look at the example and explanation again on the next page to familiarize yourself with the display.</p>`;
-                } else if (response === 1) {
-                    return `<p>You selected J. That was not the right answer. 
-                        <br><br> You indicated that the rule points to Option J. It actually points to Option F.
-                        <br> The rule is displayed in the box with the titel "Rule" and indicates if you should choose option F or J. 
-                        <br><br> Please look at the example and explanation again on the next page to familiarize yourself with the display.</p>`;
-                 } else {
-                    return `<p>Invalid response. Please try again.</p>`;
-                }
-            },
-            choices: ['Next'], // Just a button to proceed
-        });
-        timeline.push(comprehension_feedback2);
-        timeline.push({
-            timeline: [comprehension_check3],
-            on_finish: function(data) {
-                jsPsych.data.addProperties({ comprehension_check3_response: data.response}); // Log response
-            }
-        });
-
-        timeline.push({
-            type: jsPsychHtmlButtonResponse,
-            stimulus: function() {
-                // Retrieve the response from the previous trial
-                const response = jsPsych.data.get().last(1).values()[0].comprehension_check3_response;
-                
-                // Change the displayed text based on the response
-                if (response === 0) {
-                    return `<p>You selected the correct response: 59! That was not the right answer. 
-                        <br><br> You indicated the points you would get if you chose Option F. We were looking for what you get if you chose Option J.
-                        <br> The points you get when you choose Option J are displayed in the box that says "Option J: You get". 
-                        <br><br> Please look at the example and explanation again on the next page to familiarize yourself with the display.</p>`;
-                } else if (response === 1) {
-                    return `<p>You selected 56. That was not the right answer.
-                            <br><br> You indicated the points the other player would get if you chose Option J. We were looking for what you would get.
-                            <br> The points you get when you choose Option J are displayed in the box that says "Option J: You get". 
-                        <br><br> Please look at the example and explanation again on the next page to familiarize yourself with the display.</p>`;
-                } else if (response === 2) {
-                    return `<p>You selected 22. That was not the right answer.
-                            <br><br> You indicated the points you would get if you chose Option F. We were looking for what you would get if you chose Option J.
-                        <br> The points you get when you choose Option J are displayed in the box that says "Option J: You get". 
-                            <br><br> Please look at the example and explanation again on the next page to familiarize yourself with the display.</p>`;
-                } else if (response === 3) {
-                    return `<p>You selected the correct response:15!
-                            <br><br> Please look at the example and explanation again on the next page to familiarize yourself with the display.</p>`;
-                } else {
-                    return `<p>Invalid response. Please try again.</p>`;
-                }
-            },
-            choices: ['Next'], // Just a button to proceed
-        });
-        timeline.push(comprehension_feedback3);
-// DICTATOR GAME
-        timeline.push(calibration_instructions);
-        timeline.push(init_camera);
-        timeline.push(calibration);
-        timeline.push(validation_instructions);
-        timeline.push(validation);
-        timeline.push(recalibrate);
-        timeline.push(task_instructions);
-        timeline.push(charity_prac_choice);
-        timeline.push(EnterRealChoice);
-        timeline.push(real_choice);
-        timeline.push(donecursor);
-
-
-        // lookcheck
-        timeline.push(lookcheck_trial);
-        timeline.push(selected_lookcheck);
-
-
-        // other check
-        timeline.push(visioncheck_trial);
-        timeline.push(eslcheck_trial);
-        timeline.push(country_survey_trial);
-        timeline.push(demographics);
-
-
-        // traffic light check 
-       timeline.push(trafficlight_trial);
-
-
-        // end
+//
+//        // Screening questions
+//        timeline.push(glasses_screening);
+//
+//        // Webcam test
+//        timeline.push(webcam_test_instructions);
+//        timeline.push(calibration_instructions);
+//        timeline.push(init_camera);
+//        timeline.push(calibration);
+//        timeline.push(donecursor);
+//
+//          // social norm espousal
+//        timeline.push(SNE_pageone);
+//        timeline.push(SNE_pagetwo);
+//        timeline.push(SNE_pagethree);
+//        timeline.push(SNE_pagefour);
+//
+//        // SVO
+//        timeline.push(SVO_instruction);
+//        timeline.push(SVO_trial_likert1);
+//        timeline.push(SVO_trial_likert2);
+//
+//        // balls
+//        timeline.push(ballintro);
+//        timeline.push(ballintro2);
+//
+//        timeline.push({
+//            timeline: [ballcheck1],
+//            on_finish: function(data) {
+//                jsPsych.data.addProperties({ ballcheck1_response: data.response}); // Log response
+//            }
+//        });
+//        timeline.push({
+//            type: jsPsychHtmlButtonResponse,
+//            stimulus: function() {
+//                // Retrieve the response from the previous trial
+//                const response = jsPsych.data.get().last(1).values()[0].ballcheck1_response;
+//                
+//                // Change the displayed text based on the response
+//                if (response === 0) {
+//                    return `<p>You selected the correct response: 1000!
+//                        <br><br> Please look at the example and explanation again on the next page to familiarize yourself with the display.</p>`;
+//                } else if (response === 1) {
+//                    return `<p>You selected 99. That was not the right answer. 
+//                        <br><br> You indicated the random number assosciated with the ball. 
+//                        <br> The payment assosciated with option J is displayed directly next to the letter J on the right of the screen. 
+//                        <br><br> Please look at the example and explanation again on the next page to familiarize yourself with the display.</p>`;
+//                } else if (response === 2) {
+//                    return `<p>You selected 1. That was not the right answer.
+//                            <br><br> You indicated the payment for putting the ball in bucket F.
+//                            <br> The payment assosciated with option J is displayed directly next to the letter J on the right of the screen. 
+//                            <br><br> Please look at the example and explanation again on the next page to familiarize yourself with the display.</p>`;
+//                } else {
+//                    return `<p>Invalid response. Please try again.</p>`;
+//                }
+//            },
+//            choices: ['Next'], // Just a button to proceed
+//        });
+//        timeline.push(feedback_ballcheck1);
+//        timeline.push({
+//            timeline: [ballcheck2],
+//            on_finish: function(data) {
+//                jsPsych.data.addProperties({ ballcheck2_response: data.response}); // Log response
+//            }
+//        });
+//        timeline.push({
+//            type: jsPsychHtmlButtonResponse,
+//            stimulus: function() {
+//                // Retrieve the response from the previous trial
+//                const response = jsPsych.data.get().last(1).values()[0].ballcheck2_response;
+//                
+//                // Change the displayed text based on the response
+//                if (response === 0) {
+//                    return `<p>You selected the correct response: F!
+//                        <br><br> Please look at the example and explanation again on the next page to familiarize yourself with the display.</p>`;
+//                } else if (response === 1) {
+//                    return `<p>You selected J. That was not the right answer. 
+//                        <br><br> The rule is displayed in the center of the screen. It tells you to put the ball in bucket F or J.  
+//                        <br><br> Please look at the example and explanation again on the next page to familiarize yourself with the display.</p>`;
+//                } else {
+//                    return `<p>Invalid response. Please try again.</p>`;
+//                }
+//            },
+//            choices: ['Next'], // Just a button to proceed
+//        });
+//        timeline.push(feedback_ballcheck2);
+//// BALL GAME
+//        timeline.push(calibration_instructions);
+//        timeline.push(init_camera);
+//        timeline.push(calibration);
+//        timeline.push(validation_instructions);
+//        timeline.push(validation);
+//        timeline.push(recalibrate);
+//        timeline.push(ballintro3);
+//        timeline.push(ball_prac_choice);
+//        timeline.push(EnterRealChoice);
+//        timeline.push(ball_real_choice);
+//        timeline.push(donecursor);
+//
+//
+//      // Dictator game
+//        timeline.push(choice_instructions1);
+//        timeline.push(choice_instructions2);
+//        timeline.push(choice_instructions3);
+//
+//        timeline.push({
+//            timeline: [comprehension_check1],
+//            on_finish: function(data) {
+//                jsPsych.data.addProperties({ comprehension_check1_response: data.response}); // Log response
+//            }
+//        });
+//
+//        timeline.push({
+//            type: jsPsychHtmlButtonResponse,
+//            stimulus: function() {
+//                // Retrieve the response from the previous trial
+//                const response = jsPsych.data.get().last(1).values()[0].comprehension_check1_response;
+//                
+//                // Change the displayed text based on the response
+//                if (response === 0) {
+//                    return `<p>You selected the correct response: 59!
+//                        <br><br> Please look at the example and explanation again on the next page to familiarize yourself with the display.</p>`;
+//                } else if (response === 1) {
+//                    return `<p>You selected 56. That was not the right answer. 
+//                        <br><br> You indicated the points the other person gets if you chose Option J. We were looking for what they get if you chose Option F.
+//                        <br> The points for the other person when you choose Option F are displayed in the box that says "Option F: Other gets". 
+//                        <br><br> Please look at the example and explanation again on the next page to familiarize yourself with the display.</p>`;
+//                } else if (response === 2) {
+//                    return `<p>You selected 22. That was not the right answer.
+//                            <br><br> You indicated the points you would get if you chose Option F. We were looking for what the other person would get.
+//                            <br> The points for the other person when you choose Option F are displayed in the box that says "Option F: Other gets".
+//                            <br><br> Please look at the example and explanation again on the next page to familiarize yourself with the display.</p>`;
+//                } else if (response === 3) {
+//                    return `<p>You selected 15. That was not the right answer.
+//                            <br><br> You indicated the points you get if you chose Option J. We were looking for what the other player would get if you chose Option F.
+//                            <br> The points for the other person when you choose Option F are displayed in the box that says "Option F: Other gets".
+//                            <br><br> Please look at the example and explanation again on the next page to familiarize yourself with the display.</p>`;
+//                } else {
+//                    return `<p>Invalid response. Please try again.</p>`;
+//                }
+//            },
+//            choices: ['Next'], // Just a button to proceed
+//        });
+//        timeline.push(comprehension_feedback1);
+//        timeline.push({
+//            timeline: [comprehension_check2],
+//            on_finish: function(data) {
+//                jsPsych.data.addProperties({ comprehension_check2_response: data.response}); // Log response
+//            }
+//        });
+//
+//        timeline.push({
+//            type: jsPsychHtmlButtonResponse,
+//            stimulus: function() {
+//                // Retrieve the response from the previous trial
+//                const response = jsPsych.data.get().last(1).values()[0].comprehension_check2_response;
+//                
+//                // Change the displayed text based on the response
+//                if (response === 0) {
+//                    return `<p>You selected the correct response: F!
+//                        <br><br> Please look at the example and explanation again on the next page to familiarize yourself with the display.</p>`;
+//                } else if (response === 1) {
+//                    return `<p>You selected J. That was not the right answer. 
+//                        <br><br> You indicated that the rule points to Option J. It actually points to Option F.
+//                        <br> The rule is displayed in the box with the titel "Rule" and indicates if you should choose option F or J. 
+//                        <br><br> Please look at the example and explanation again on the next page to familiarize yourself with the display.</p>`;
+//                 } else {
+//                    return `<p>Invalid response. Please try again.</p>`;
+//                }
+//            },
+//            choices: ['Next'], // Just a button to proceed
+//        });
+//        timeline.push(comprehension_feedback2);
+//        timeline.push({
+//            timeline: [comprehension_check3],
+//            on_finish: function(data) {
+//                jsPsych.data.addProperties({ comprehension_check3_response: data.response}); // Log response
+//            }
+//        });
+//
+//        timeline.push({
+//            type: jsPsychHtmlButtonResponse,
+//            stimulus: function() {
+//                // Retrieve the response from the previous trial
+//                const response = jsPsych.data.get().last(1).values()[0].comprehension_check3_response;
+//                
+//                // Change the displayed text based on the response
+//                if (response === 0) {
+//                    return `<p>You selected the correct response: 59! That was not the right answer. 
+//                        <br><br> You indicated the points you would get if you chose Option F. We were looking for what you get if you chose Option J.
+//                        <br> The points you get when you choose Option J are displayed in the box that says "Option J: You get". 
+//                        <br><br> Please look at the example and explanation again on the next page to familiarize yourself with the display.</p>`;
+//                } else if (response === 1) {
+//                    return `<p>You selected 56. That was not the right answer.
+//                            <br><br> You indicated the points the other player would get if you chose Option J. We were looking for what you would get.
+//                            <br> The points you get when you choose Option J are displayed in the box that says "Option J: You get". 
+//                        <br><br> Please look at the example and explanation again on the next page to familiarize yourself with the display.</p>`;
+//                } else if (response === 2) {
+//                    return `<p>You selected 22. That was not the right answer.
+//                            <br><br> You indicated the points you would get if you chose Option F. We were looking for what you would get if you chose Option J.
+//                        <br> The points you get when you choose Option J are displayed in the box that says "Option J: You get". 
+//                            <br><br> Please look at the example and explanation again on the next page to familiarize yourself with the display.</p>`;
+//                } else if (response === 3) {
+//                    return `<p>You selected the correct response:15!
+//                            <br><br> Please look at the example and explanation again on the next page to familiarize yourself with the display.</p>`;
+//                } else {
+//                    return `<p>Invalid response. Please try again.</p>`;
+//                }
+//            },
+//            choices: ['Next'], // Just a button to proceed
+//        });
+//        timeline.push(comprehension_feedback3);
+//// DICTATOR GAME
+//        timeline.push(calibration_instructions);
+//        timeline.push(init_camera);
+//        timeline.push(calibration);
+//        timeline.push(validation_instructions);
+//        timeline.push(validation);
+//        timeline.push(recalibrate);
+//        timeline.push(task_instructions);
+//        timeline.push(charity_prac_choice);
+//        timeline.push(EnterRealChoice);
+//        timeline.push(real_choice);
+//        timeline.push(donecursor);
+//
+//
+//        // lookcheck
+//        timeline.push(lookcheck_trial);
+//        timeline.push(selected_lookcheck);
+//
+//
+//        // other check
+//        timeline.push(visioncheck_trial);
+//        timeline.push(eslcheck_trial);
+//        timeline.push(country_survey_trial);
+//        timeline.push(demographics);
+//
+//
+//        // traffic light check 
+//       timeline.push(trafficlight_trial);
+//
+//
+//        // end
         timeline.push(feedback);
         timeline.push(success_guard);
         

@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Good2Gether/keeplooking.git"
+    "url": "git+https://github.com/rimamrahal/nogago.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Good2Gether/keeplooking/issues"
+    "url": "https://github.com/rimamrahal/nogago/issues"
   },
-  "homepage": "https://github.com/Good2Gether/keeplooking#readme",
+  "homepage": "https://github.com/rimamrahal/nogago#readme",
   "dependencies": {
     "aws-sdk": "^2.1363.0",
     "dotenv": "^16.0.3",
