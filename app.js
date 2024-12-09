@@ -12,12 +12,12 @@ const aws = require('aws-sdk');
 const S3_BUCKET = process.env.S3_BUCKET;
 const s3 = new aws.S3({
     accessKeyId: process.env.AWS_ACCESS_KEY,
-    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
     region: 'eu-central-1'
   });
 
 
-aws.config.region =  v;
+aws.config.region =  'eu-central-1';
 
 //var saveDropbox = mymods.saveDropbox;
 
