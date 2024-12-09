@@ -115,7 +115,6 @@ app.post("/data", function (request, response) {
         Bucket: S3_BUCKET,
         Key: filename,
         Body: data,
-        ContentEncoding: 'base64',
         ContentType: 'application/json',
         ACL: 'public-read'
     };
