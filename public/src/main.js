@@ -1,4 +1,4 @@
-    /** load all the images, and remember to preload before starting the experiment */
+    /** remember to set number of trials (look for that phrase to find the right place) */
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -61,7 +61,7 @@
         closeFullscreen();
         document.body.style.cursor = 'auto';
         jsPsych.endExperiment(`<div style="max-width: 1000px;">This is the end of the experiment. Thanks for taking part!
-                    <br><br>Your completion code is: <b> 189273</b>. You can enter it at Prolific.
+                    <br><br>Your completion code is: <b> CXLOD8BP</b>. You can enter it at Prolific.
                     <br><br>The webcam will turn off when you close the browser. You can close the browser when you have copied your completion code.
                     <br><br>Our goal was to study which information people take into consideration when they decide about conforming to rules in different context.</br>
                      
@@ -134,17 +134,17 @@ var calibration_instructions = {
   type: jsPsychHtmlKeyboardResponse,
   stimulus: `
   <div>
-         <font size = 4px font color = "magenta">      <p> We record your eye movements in this decision task.</p>
+         <font size = 4px font color = "magenta">      <p> We now set up your webcam for tracking your eyes.</p>
          <p> You need to help the camera get a good view of your eyes. To do that, it's <b>IMPORTANT</b> that you follow these rules: <br/> <br/> <br/></font>
          <img height="200px" width="1000px" src="../img/instruct1.png"><br/>
          <br><br/>
-        Keep lights in front of you. No windows or lamps behind you. <br/> <br/>
+        Keep lights in front of you. No windows or lamps behind you. 
          <br><br/>
-         On the next page, you will start the eye tracking. Use the rules above.                 <br><br/>
+         On the next page, you will start the eye tracking. Use the rules above.                
+        <br><br/>
          <div>
             After that, you will teach the computer to track your eyes.<br/>
-            You will see a <b>black dot</b> on the screen.<br/>
-            Look directly at each dot until it goes away.<br/>
+            You will see a <b>black dot</b> on the screen. Look directly at each dot until it goes away.<br/>
             Then, <b>move your eyes</b> to look at the next dot, and repeat.<br/>
       <br>
          <font   >Press <b>SPACE</b> to start eye tracking! </font></div
@@ -299,6 +299,7 @@ var fixation = {
           name: 'prolific_id'}, 
       ],
       preamble: `<div>Welcome to this study! </div>`,
+      required: true,
     };
 
 
@@ -340,15 +341,16 @@ const glasses_screening = {
               <br>You can therefore only take part if you are NOT wearing glasses. 
               <br>It is ok to take part if you can take your glasses off now and still read very small print on the screen.
               <br><br> <div style="font-size: 10px !important;">If you cannot read this WITHOUT glasses, you cannot take part!</div> 
-              <br><br>Please be honest and indicate below if you can take part or not. If you cannot, you will still receive a payment of 10¢ for your time. We will redirect to back to Prolific.  
+              <br><br>Please be honest and indicate below if you can take part or not. If you cannot, you will still receive a payment of 5¢ for your time. We will redirect to back to Prolific.  
               <br><br><br>Please confirm that you are not wearing glasses and can proceed with this study.</p>
       `,
       choices: ['Not wearing glasses and can take part.', 'Cannot take part because wearing glasses.'],
+      required: true,
       on_finish: function(data) {
           // Check if the answer is "Cannot take part"
           if (data.response === 1) {  // 0 corresponds to the first button ("Yes")
               // If they are wearing glasses, redirect and end the experiment
-              window.location.href = "https://www.example.com/redirect-page";  // Replace with your desired URL
+              window.location.href = "https://app.prolific.com/submissions/complete?cc=C13ES2ZQ";  // Replace with your desired URL
           } else {
               // Otherwise, continue with the experiment
               console.log("Participant chose no glasses, continuing the experiment.");
@@ -358,6 +360,20 @@ const glasses_screening = {
         name: 'glasses_screening'
       }
   };
+
+
+    // INSTRUCTIONS
+    var webcam_test_instructions = {
+      type: jsPsychHtmlKeyboardResponse,
+      stimulus: ` <div style="width: 80%; margin: auto;">
+      <p> Next, we'd like to check if your webcam allows for eye-tracking.</p>
+      <p> We want to make sure this works before you start with the actual tasks in the study. </p> 
+      <br>
+      Press <b>SPACE</b> to begin!
+      </div>`,
+      choices: [' ']
+    };
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 //Social Value Orientation/////////////////////////////////////////////////////////////////////////////////////////////////
@@ -388,8 +404,7 @@ const glasses_screening = {
         payoffs for yourself and another participant)
       will be implemented OR if the choice of another participant will be implemented for you. 
       <br> 
-      <br>
-      <b> 100 points are worth 0.37$ (about 21 Peso).  </b>
+      <b> 100 points are worth 0.30£.  </b>
 
       </p>
       <br>
@@ -467,23 +482,23 @@ const glasses_screening = {
     type: jsPsychSurveyLikert,
     preamble: "In this first task, please rate the extent to which the statements below are characteristic of you or what you believe. There are no right or wrong answers.",
     questions: [
-      {prompt: "I go out of my way to follow social norms.", name: 'SNE1', labels: SNE_scale_labels},
-      {prompt: "We shouldn't always have to follow a set of social rules.", name: 'SNE2', labels: SNE_scale_labels},
-      {prompt: "People should always be able to behave as they wish rather than trying to fit the norm.", name: 'SNE3', labels: SNE_scale_labels},
-      {prompt: "There is a correct way to behave in every situation.", name: 'SNE4', labels: SNE_scale_labels},
+      {prompt: "I go out of my way to follow social norms.", name: 'SNE1', labels: SNE_scale_labels, required: true},
+      {prompt: "We shouldn't always have to follow a set of social rules.", name: 'SNE2', labels: SNE_scale_labels, required: true},
+      {prompt: "People should always be able to behave as they wish rather than trying to fit the norm.", name: 'SNE3', labels: SNE_scale_labels, required: true},
+      {prompt: "There is a correct way to behave in every situation.", name: 'SNE4', labels: SNE_scale_labels, required: true},
       ],
-    randomize_question_order: false
+    randomize_question_order: false, 
   };
 
   var SNE_pagetwo= {
     type: jsPsychSurveyLikert,
     preamble: "Please rate the extent to which the statements below are characteristic of you or what you believe. There are no right or wrong answers.",
     questions: [
-      {prompt: "If more people followed society's rules, the world would be a better place.", name: 'SNE5', labels: SNE_scale_labels},
-      {prompt: "People need to follow life's unwritten rules every bit as strictly as they follow the written rules.", name: 'SNE6', labels: SNE_scale_labels},
-      {prompt: "There are lots of vital customs that people should follow as members of society.", name: 'SNE7', labels: SNE_scale_labels},
+      {prompt: "If more people followed society's rules, the world would be a better place.", name: 'SNE5', labels: SNE_scale_labels, required: true},
+      {prompt: "People need to follow life's unwritten rules every bit as strictly as they follow the written rules.", name: 'SNE6', labels: SNE_scale_labels, required: true},
+      {prompt: "There are lots of vital customs that people should follow as members of society.", name: 'SNE7', labels: SNE_scale_labels, required: true},
     ],
-    randomize_question_order: false
+    randomize_question_order: false, 
   };
 
 
@@ -491,12 +506,12 @@ const glasses_screening = {
     type: jsPsychSurveyLikert,
     preamble: "Please rate the extent to which the statements below are characteristic of you or what you believe. There are no right or wrong answers.",
     questions: [
-      {prompt: "The standards that society expects us to meet are far too restrictive.", name: 'SNE8', labels: SNE_scale_labels},
-      {prompt: "People who do what society expects of them lead happier lieves.", name: 'SNE9', labels: SNE_scale_labels},
-      {prompt: "Our society is built on unwritten rules that members need to follow.", name: 'SNE10', labels: SNE_scale_labels},
-      {prompt: "I am at ease only when everyone around me is adhering to society's norms.", name: 'SNE11', labels: SNE_scale_labels},
+      {prompt: "The standards that society expects us to meet are far too restrictive.", name: 'SNE8', labels: SNE_scale_labels, required: true},
+      {prompt: "People who do what society expects of them lead happier lives.", name: 'SNE9', labels: SNE_scale_labels, required: true},
+      {prompt: "Our society is built on unwritten rules that members need to follow.", name: 'SNE10', labels: SNE_scale_labels, required: true},
+      {prompt: "I am at ease only when everyone around me is adhering to society's norms.", name: 'SNE11', labels: SNE_scale_labels, required: true},
     ],
-    randomize_question_order: false
+    randomize_question_order: false, 
   };
 
 
@@ -504,11 +519,11 @@ const glasses_screening = {
     type: jsPsychSurveyLikert,
     preamble: "Please rate the extent to which the statements below are characteristic of you or what you believe. There are no right or wrong answers.",
     questions: [
-      {prompt: "We would be happier if we didn't try to follow society's norms.", name: 'SNE12', labels: SNE_scale_labels},
-      {prompt: "My idea of a perfect world would be one with few social expectations.", name: 'SNE13', labels: SNE_scale_labels},
-      {prompt: "I always do my best to follow society's rules.", name: 'SNE14', labels: SNE_scale_labels},
+      {prompt: "We would be happier if we didn't try to follow society's norms.", name: 'SNE12', labels: SNE_scale_labels, required: true},
+      {prompt: "My idea of a perfect world would be one with few social expectations.", name: 'SNE13', labels: SNE_scale_labels, required: true},
+      {prompt: "I always do my best to follow society's rules.", name: 'SNE14', labels: SNE_scale_labels, required: true},
     ],
-    randomize_question_order: false
+    randomize_question_order: false, 
   };
 
 
@@ -538,8 +553,8 @@ const ballintro = {
           <br><br>
           The rule in which bucket to put the ball (Bucket F or Bucket J) will be displayed.
           <br><br>
-          Your earnings from this part will be based on your decisions: it is the sum of earnings from the F and J buckets.
-          <br><br>Press 'Next' to proceed to some questions testing your understanding of these instructions.
+          Your earnings from this part will be based on your decisions: it is the sum of earnings from the F and J buckets. 100 points are worth 0.01£. 
+          <br><br>Click 'Next' to proceed to some questions testing your understanding of these instructions.
       </p>
   `,
   choices: ['Next'],
@@ -555,14 +570,14 @@ stimulus: `
       ${participant_ball_order ? `
           <div style="width: 50%; display: table; justify-content: center; margin-top: 5vh; border-top: 2px solid white;">
               <div style="border: none; padding: 10px; text-align: center;">
-                  <div style="font-size: 10px; font-weight: bold; margin-bottom: 10vh;">Ball</div>
+                  <div style="font-size: 10px; font-weight: bold; margin-bottom: 5vh;">Ball</div>
                   <div style="font-size: 10px;">99</div> <!-- Dynamic ball number -->
               </div>
           </div>
       ` : `
           <div style="width: 50%; display: table; justify-content: center; margin-top: 5vh; border-top: 2px solid white;">
               <div style="border: none; padding: 10px; text-align: center;">
-                  <div style="font-size: 10px; font-weight: bold; margin-bottom: 10vh;">Rule</div>
+                  <div style="font-size: 10px; font-weight: bold; margin-bottom: 5vh;">Rule</div>
                   <div style="font-size: 10px;">F</div> <!-- Dynamic rule -->
               </div>
           </div>
@@ -570,7 +585,7 @@ stimulus: `
       
       <!-- Middle Section (Table) -->
       <div style="width: 50%; display: table; table-layout: fixed;">
-          <div style="display: table-row; height: 150px;">
+          <div style="display: table-row; height: 80px;">
               <!-- Column for F -->
               <div style="display: table-cell; text-align: center; vertical-align: middle; border: none;">
                   <div>
@@ -602,14 +617,14 @@ stimulus: `
       ${!participant_ball_order ? `
           <div style="width: 50%; display: table; justify-content: center; margin-bottom: 5vh; border-bottom: 2px solid white;">
               <div style="border: none; padding: 10px; text-align: center;">
-                  <div style="font-size: 10px; margin-bottom: 10vh !important;">99</div> <!-- Dynamic ball number -->
+                  <div style="font-size: 10px; margin-bottom: 5vh !important;">99</div> <!-- Dynamic ball number -->
                   <div style="font-size: 10px; font-weight: bold !important;">Ball</div>
               </div>
           </div>
       ` : `
           <div style="width: 50%; display: table; justify-content: center; margin-bottom: 5vh; border-bottom: 2px solid white;">
               <div style="border: none; padding: 10px; text-align: center;">
-                  <div style="font-size: 10px; margin-bottom: 10vh;">F</div> <!-- Dynamic rule -->
+                  <div style="font-size: 10px; margin-bottom: 5vh;">F</div> <!-- Dynamic rule -->
                   <div style="font-size: 10px; font-weight: bold;">Rule</div>
               </div>
           </div>
@@ -632,14 +647,14 @@ stimulus: `
       ${participant_ball_order ? `
           <div style="width: 50%; display: table; justify-content: center; margin-top: 5vh; border-top: 2px solid white;">
               <div style="border: none; padding: 10px; text-align: center;">
-                  <div style="font-size: 10px; font-weight: bold; margin-bottom: 10vh;">Ball</div>
+                  <div style="font-size: 10px; font-weight: bold; margin-bottom: 5vh;">Ball</div>
                   <div style="font-size: 10px;">99</div> <!-- Dynamic ball number -->
               </div>
           </div>
       ` : `
           <div style="width: 50%; display: table; justify-content: center; margin-top: 5vh; border-top: 2px solid white;">
               <div style="border: none; padding: 10px; text-align: center;">
-                  <div style="font-size: 10px; font-weight: bold; margin-bottom: 10vh;">Rule</div>
+                  <div style="font-size: 10px; font-weight: bold; margin-bottom: 5vh;">Rule</div>
                   <div style="font-size: 10px;">F</div> <!-- Dynamic rule -->
               </div>
           </div>
@@ -647,7 +662,7 @@ stimulus: `
       
       <!-- Middle Section (Table) -->
       <div style="width: 50%; display: table; table-layout: fixed;">
-          <div style="display: table-row; height: 150px;">
+          <div style="display: table-row; height: 80px;">
               <!-- Column for F -->
               <div style="display: table-cell; text-align: center; vertical-align: middle; border: none;">
                   <div>
@@ -679,14 +694,14 @@ stimulus: `
       ${!participant_ball_order ? `
           <div style="width: 50%; display: table; justify-content: center; margin-bottom: 5vh; border-bottom: 2px solid white;">
               <div style="border: none; padding: 10px; text-align: center;">
-                  <div style="font-size: 10px; margin-bottom: 10vh !important;">99</div> <!-- Dynamic ball number -->
+                  <div style="font-size: 10px; margin-bottom: 5vh !important;">99</div> <!-- Dynamic ball number -->
                   <div style="font-size: 10px; font-weight: bold !important;">Ball</div>
               </div>
           </div>
       ` : `
           <div style="width: 50%; display: table; justify-content: center; margin-bottom: 5vh; border-bottom: 2px solid white;">
               <div style="border: none; padding: 10px; text-align: center;">
-                  <div style="font-size: 10px; margin-bottom: 10vh;">F</div> <!-- Dynamic rule -->
+                  <div style="font-size: 10px; margin-bottom: 5vh;">F</div> <!-- Dynamic rule -->
                   <div style="font-size: 10px; font-weight: bold;">Rule</div>
               </div>
           </div>
@@ -700,29 +715,29 @@ choices: ['OK I understand'],
 const ballcheck2 = {
 type: jsPsychHtmlButtonResponse,
 stimulus: `
-  <div style="display: flex; flex-direction: column; align-items: center; height: 70vh; justify-content: space-between; padding: 10px 0; box-sizing: border-box;">
-      <div style="font-size: 20px;">Please complete the sentence below by clicking on the correct button.</div> <!-- Question -->
+  <div style="display: flex; flex-direction: column; align-items: center; height: 70vh; justify-content: space-between; padding: 10px 0; box-sizing: border-box; margin-bottom: 10px;">
+       <div style="font-size: 20px;">In this example, the rule is to put the ball in bucket ______ .</div> <!-- Question -->
       
       <!-- Conditional Placement: Ball on top or bottom -->
       ${participant_ball_order ? `
           <div style="width: 50%; display: table; justify-content: center; margin-top: 5vh; border-top: 2px solid white;">
               <div style="border: none; padding: 10px; text-align: center;">
-                  <div style="font-size: 10px; font-weight: bold; margin-bottom: 10vh;">Ball</div>
+                  <div style="font-size: 10px; font-weight: bold; margin-bottom: 5vh;">Ball</div>
                   <div style="font-size: 10px;">99</div> <!-- Dynamic ball number -->
               </div>
           </div>
       ` : `
           <div style="width: 50%; display: table; justify-content: center; margin-top: 5vh; border-top: 2px solid white;">
               <div style="border: none; padding: 10px; text-align: center;">
-                  <div style="font-size: 10px; font-weight: bold; margin-bottom: 10vh;">Rule</div>
+                  <div style="font-size: 10px; font-weight: bold; margin-bottom: 5vh;">Rule</div>
                   <div style="font-size: 10px;">F</div> <!-- Dynamic rule -->
               </div>
           </div>
       `}
       
       <!-- Middle Section (Table) -->
-      <div style="width: 50%; display: table; table-layout: fixed;">
-          <div style="display: table-row; height: 150px;">
+      <div style="width: 50%; display: table; table-layout: fixed; overflow-x: auto; overflow-y: auto;">
+          <div style="display: table-row; height: 80px;">
               <!-- Column for F -->
               <div style="display: table-cell; text-align: center; vertical-align: middle; border: none;">
                   <div>
@@ -754,20 +769,20 @@ stimulus: `
       ${!participant_ball_order ? `
           <div style="width: 50%; display: table; justify-content: center; margin-bottom: 5vh; border-bottom: 2px solid white;">
               <div style="border: none; padding: 10px; text-align: center;">
-                  <div style="font-size: 10px; margin-bottom: 10vh !important;">99</div> <!-- Dynamic ball number -->
+                  <div style="font-size: 10px; margin-bottom: 5vh !important;">99</div> <!-- Dynamic ball number -->
                   <div style="font-size: 10px; font-weight: bold !important;">Ball</div>
               </div>
           </div>
       ` : `
           <div style="width: 50%; display: table; justify-content: center; margin-bottom: 5vh; border-bottom: 2px solid white;">
               <div style="border: none; padding: 10px; text-align: center;">
-                  <div style="font-size: 10px; margin-bottom: 10vh;">F</div> <!-- Dynamic rule -->
+                  <div style="font-size: 10px; margin-bottom: 5vh;">F</div> <!-- Dynamic rule -->
                   <div style="font-size: 10px; font-weight: bold;">Rule</div>
               </div>
           </div>
       `}
       
-      <div style="font-size: 20px;">The rule is to put the ball in bucket ______ .</div> <!-- Question -->
+     
   </div>
 `,
 choices: ['F', 'J'], 
@@ -788,14 +803,14 @@ stimulus: `
       ${participant_ball_order ? `
           <div style="width: 50%; display: table; justify-content: center; margin-top: 5vh; border-top: 2px solid white;">
               <div style="border: none; padding: 10px; text-align: center;">
-                  <div style="font-size: 10px; font-weight: bold; margin-bottom: 10vh;">Ball</div>
+                  <div style="font-size: 10px; font-weight: bold; margin-bottom: 5vh;">Ball</div>
                   <div style="font-size: 10px;">99</div> <!-- Dynamic ball number -->
               </div>
           </div>
       ` : `
           <div style="width: 50%; display: table; justify-content: center; margin-top: 5vh; border-top: 2px solid white;">
               <div style="border: none; padding: 10px; text-align: center;">
-                  <div style="font-size: 10px; font-weight: bold; margin-bottom: 10vh;">Rule</div>
+                  <div style="font-size: 10px; font-weight: bold; margin-bottom: 5vh;">Rule</div>
                   <div style="font-size: 10px;">F</div> <!-- Dynamic rule -->
               </div>
           </div>
@@ -803,7 +818,7 @@ stimulus: `
       
       <!-- Middle Section (Table) -->
       <div style="width: 50%; display: table; table-layout: fixed;">
-          <div style="display: table-row; height: 150px;">
+          <div style="display: table-row; height: 80px;">
               <!-- Column for F -->
               <div style="display: table-cell; text-align: center; vertical-align: middle; border: none;">
                   <div>
@@ -835,14 +850,14 @@ stimulus: `
       ${!participant_ball_order ? `
           <div style="width: 50%; display: table; justify-content: center; margin-bottom: 5vh; border-bottom: 2px solid white;">
               <div style="border: none; padding: 10px; text-align: center;">
-                  <div style="font-size: 10px; margin-bottom: 10vh !important;">99</div> <!-- Dynamic ball number -->
+                  <div style="font-size: 10px; margin-bottom: 5vh !important;">99</div> <!-- Dynamic ball number -->
                   <div style="font-size: 10px; font-weight: bold !important;">Ball</div>
               </div>
           </div>
       ` : `
           <div style="width: 50%; display: table; justify-content: center; margin-bottom: 5vh; border-bottom: 2px solid white;">
               <div style="border: none; padding: 10px; text-align: center;">
-                  <div style="font-size: 10px; margin-bottom: 10vh;">F</div> <!-- Dynamic rule -->
+                  <div style="font-size: 10px; margin-bottom: 5vh;">F</div> <!-- Dynamic rule -->
                   <div style="font-size: 10px; font-weight: bold;">Rule</div>
               </div>
           </div>
@@ -973,7 +988,7 @@ var ball_prac_choice = {
         ]
       }
     ],
-    loop_function: () => ball_real_choice_counts < 5, // set number of trials here
+    loop_function: () => ball_real_choice_counts < 5, // set number of trials here, maybe make it 50
   };
 
   var donecursor = {
@@ -1011,7 +1026,7 @@ var choice_instructions1 = {
   one of your own decisions is randomly chosen to be paid out to you and the other player. </br>
   OR </br>
   someone else's decision is randomly chosen to be paid out, and you receive what they decided. </p></br>
-  <p> 100 points are worth 0.37$ (about 21 Peso). Each decision you make has the same chance to be picked to be paid out.<p/> 
+  <p> 100 points are worth 0.30£. Each decision you make has the same chance to be picked to be paid out.<p/> 
 
   <p>Press <b>SPACE</b> to continue!</p>
   </div>
@@ -1067,9 +1082,9 @@ var choice_instructions3 = {
     }  
     return `<div style="width: 80%; margin: auto; text-align: center;">
   <p>Here is an example of how the decision tasks will look. </br> </p>
-  <img height="600px" src="${imgSrc}"><br/>
+  <img height="200px" src="${imgSrc}"><br/>
   <p> Each box shows you information about the decision:
-  <div style="width: 80%; margin: auto; text-align:left;">
+  <div style="width: 50vw; margin: auto; text-align:left;">
   <ul>
   <li>How many points you get if you choose Option F (left) or J (right).</li>
   <li>How many points the other person get if you choose Option F(left) or J (right).</li> 
@@ -1098,7 +1113,7 @@ var comprehension_check1 = {
   stimulus: function() {
     return `<div style="max-width: 80%; margin:auto; text-align: center;"> 
        
-      <img height="600px" src="${imgSrc}"><br/>
+      <img height="200px" src="${imgSrc}"><br/>
       <br>
       </div>
       <p>Imagine you choose Option F (left). </br>
@@ -1119,7 +1134,7 @@ var comprehension_feedback1 = {
   stimulus: function() {
     return `<div style="max-width: 80%; margin:auto;  text-align: center;"> 
        
-      <img height="600px" src="${imgSrc}"><br/>
+      <img height="200px" src="${imgSrc}"><br/>
       <br>
       </div>
       <p>In this example, if you choose Option F (left), the <b> other person </b> gets 59 points.</p>
@@ -1134,7 +1149,7 @@ var comprehension_check2 = {
   stimulus: function() {
     return `<div style="max-width: 80%; margin:auto; text-align: center;"> 
        
-      <img height="600px" src="${imgSrc}"><br/>
+      <img height="200px" src="${imgSrc}"><br/>
       <br>
       </div>
       <p>Look at this example again.<br>
@@ -1156,11 +1171,11 @@ var comprehension_feedback2 = {
     return `
     <div style="max-width: 80%; margin:auto;  text-align: center;"> 
        
-    <img height="600px" src="${imgSrc}"><br/>
+    <img height="200px" src="${imgSrc}"><br/>
     <br>
     </div>
-    <p>In this example, the rule is to choose <b>Bucket F</b>. You can tell because there is an <b>F</b> shown.</p>
-    <p>When the rule is to choose <b>Bucket J</b>, there is a <b>J</b> shown.</p>`;
+    <p>In this example, the rule is to choose <b>Option F</b>. You can tell because there is an <b>F</b> shown.</p>
+    <p>When the rule is to choose <b>Option J</b>, there is a <b>J</b> shown.</p>`;
     }, 
   choices: ['OK I understand'],
   required: true
@@ -1173,7 +1188,7 @@ var comprehension_check3 = {
   stimulus: function() {
     return `<div style="max-width: 80%; margin:auto; text-align: center;"> 
        
-      <img height="600px" src="${imgSrc}"><br/>
+      <img height="200px" src="${imgSrc}"><br/>
       <br>
       </div>
       <p>Last question about this example:.<br>
@@ -1193,7 +1208,7 @@ var comprehension_feedback3 = {
   stimulus: function() {
     return `<div style="max-width: 80%; margin:auto;  text-align: center;"> 
        
-      <img height="600px" src="${imgSrc}"><br/>
+      <img height="200px" src="${imgSrc}"><br/>
       <br>
       </div>
       <p>In this example, if you choose Option J (right), <b> you </b> get 15 points.</p> 
@@ -1319,7 +1334,7 @@ var charity_prac_choice = {
           ]
         }
       ],
-      loop_function: () => real_choice_counts < 5, // set number of trials here
+      loop_function: () => real_choice_counts < 5, // set number of trials here, maybe make it 60
     };
 
 
@@ -1333,7 +1348,7 @@ var charity_prac_choice = {
           type: jsPsychHtmlButtonResponse,
           stimulus: function() {
             return `
-             <p>In the next task, you have 100 points that are worth 0.37$ (about 21 Peso).</p> 
+             <p>In the next task, you have 100 points that are worth 0.30£.</p> 
              <p>You can keep these points to yourself, or you can give some or all of the points to another participant in this study. </p>
              <p>There is either a rule that you should keep the 100 points to yourself or that you should give some of the points to the other participant.</p>
              <p><strong>Would you like to know what the rule is?</strong></p>`;
@@ -1511,7 +1526,7 @@ var feedback = {
            })
            .done(function () {
             ("This is the end of the experiment. Thanks for taking part!" +
-            "Your completion code is: <b> 189273 </b>." +
+            "Your completion code is: <b> CXLOD8BP </b>." +
             "The webcam will turn off when you close the browser. You can close the browser when you have copied your completion code." +
             "Our goal was to study which information people take into consideration when they decide about conforming to rules in different context.")
            })
@@ -1532,6 +1547,12 @@ var feedback = {
 
         // Screening questions
         timeline.push(glasses_screening);
+
+        // Webcam test
+        timeline.push(webcam_test_instructions);
+        timeline.push(calibration_instructions);
+        timeline.push(init_camera);
+        timeline.push(calibration);
 
           // social norm espousal
         timeline.push(SNE_pageone);
@@ -1598,7 +1619,7 @@ var feedback = {
                         <br><br> Please look at the example and explanation again on the next page to familiarize yourself with the display.</p>`;
                 } else if (response === 1) {
                     return `<p>You selected J. That was not the right answer. 
-                        <br><br> The rule is displayed in the center of the screen and indicates if you should put the ball in bucket F or J.  
+                        <br><br> The rule is displayed in the center of the screen. It tells you to put the ball in bucket F or J.  
                         <br><br> Please look at the example and explanation again on the next page to familiarize yourself with the display.</p>`;
                 } else {
                     return `<p>Invalid response. Please try again.</p>`;
