@@ -128,7 +128,7 @@ var jsPsychBinaryChoiceTableFour = (function (jspsych) {
                         <col span="1" style="width: 33%; border-left: 1px gray solid;">
                       </colgroup>
                       <tr style="height:10%;">
-                        <th style="vertical-align: top; ">${trial.payoffRuleTop ? 'Rule ': 'Other&rsquo;s Random Number'}</th>
+                        <th style="vertical-align: top; ">${trial.payoffRuleTop ? 'Majority Rule ': 'Other&rsquo;s Random Number'}</th>
                         <th style="vertical-align: top; ">Option F: ${trial.payoffYouTop ? 'You get' : 'Other gets'}</th>
                         <th style="vertical-align: top; ">Option J: ${trial.payoffYouTop ? 'You get' : 'Other gets'}</th>
                       </tr>
@@ -143,7 +143,7 @@ var jsPsychBinaryChoiceTableFour = (function (jspsych) {
                         <td style="text-align: center;   border-top: 1px gray solid;"> ${trial.payoffYouTop ? trial.stimulus['o2'].toFixed(0) : trial.stimulus['s2'].toFixed(0) } </td>
                     </tr>
                       <tr style="height:10%;">
-                      <th style="vertical-align: bottom; ">${trial.payoffRuleTop ? 'Other&rsquo;s Random Number' : 'Rule '}</th>
+                      <th style="vertical-align: bottom; ">${trial.payoffRuleTop ? 'Other&rsquo;s Random Number' : 'Majority Rule '}</th>
                   <th style="vertical-align: bottom;  height: 25px;">Option F: ${trial.payoffYouTop ? 'Other gets' : 'You get'}</th>
                   <th style="vertical-align: bottom; ">Option J: ${trial.payoffYouTop ? 'Other gets' : 'You get'}</th>
                   </tr>
@@ -171,7 +171,7 @@ var jsPsychBinaryChoiceTableFour = (function (jspsych) {
                       </colgroup>
                       <tr style="height:10%;">
                         <th style="vertical-align: top; ">Option F: ${trial.payoffYouTop ? 'You get' : 'Other gets'}</th>
-                        <th style="vertical-align: top; ">${trial.payoffRuleTop ? 'Rule ': 'Other´s Random Number'}</th>
+                        <th style="vertical-align: top; ">${trial.payoffRuleTop ? 'Majority Rule ': 'Other´s Random Number'}</th>
                         <th style="vertical-align: top; ">Option J: ${trial.payoffYouTop ? 'You get' : 'Other gets'}</th>
                       </tr>
                       <tr style="vertical-align: center; height: 40%;">
@@ -186,7 +186,7 @@ var jsPsychBinaryChoiceTableFour = (function (jspsych) {
                     </tr>
                       <tr style="height:10%;">
                   <th style="vertical-align: bottom;  height: 25px;">Option F: ${trial.payoffYouTop ? 'Other gets' : 'You get'}</th>
-                  <th style="vertical-align: bottom; ">${trial.payoffRuleTop ? 'Other&rsquo;s Random Number' : 'Rule '}</th>
+                  <th style="vertical-align: bottom; ">${trial.payoffRuleTop ? 'Other&rsquo;s Random Number' : 'Majority Rule '}</th>
                   <th style="vertical-align: bottom; ">Option J: ${trial.payoffYouTop ? 'Other gets' : 'You get'}</th>
                   </tr>
                 
@@ -214,7 +214,7 @@ var jsPsychBinaryChoiceTableFour = (function (jspsych) {
                       <tr style="height:10%;">
                         <th style="vertical-align: top; ">Option F: ${trial.payoffYouTop ? 'You get' : 'Other gets'}</th>
                         <th style="vertical-align: top; ">Option J: ${trial.payoffYouTop ? 'You get' : 'Other gets'}</th>
-                        <th style="vertical-align: top; ">${trial.payoffRuleTop ? 'Rule ': 'Other´s Random Number'}</th>
+                        <th style="vertical-align: top; ">${trial.payoffRuleTop ? 'Majority Rule ': 'Other´s Random Number'}</th>
                       </tr>
                       <tr style="vertical-align: center; height: 40%;">
                         <td style="text-align: center; " id="up-left">${trial.payoffYouTop ? trial.stimulus['s1'].toFixed(0) : trial.stimulus['o1'].toFixed(0) } </td>
@@ -229,7 +229,7 @@ var jsPsychBinaryChoiceTableFour = (function (jspsych) {
                       <tr style="height:10%;">
                   <th style="vertical-align: bottom;  height: 25px;">Option F: ${trial.payoffYouTop ? 'Other gets' : 'You get'}</th>
                   <th style="vertical-align: bottom; ">Option J: ${trial.payoffYouTop ? 'Other gets' : 'You get'}</th>
-                  <th style="vertical-align: bottom; ">${trial.payoffRuleTop ? 'Other&rsquo;s Random Number' : 'Rule '}</th>
+                  <th style="vertical-align: bottom; ">${trial.payoffRuleTop ? 'Other&rsquo;s Random Number' : 'Majority Rule '}</th>
                   </tr>
                 
                   </table>

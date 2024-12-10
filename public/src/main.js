@@ -473,6 +473,147 @@ const glasses_screening = {
       preamble: "For each task, click on the option you prefer.", 
     };
 
+///////////////////////////////////////////////////////////////////////////////////////////////////
+//Personal Norms DG ////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+    var pndg_intro = {
+      type: jsPsychHtmlKeyboardResponse,
+      stimulus: `
+     <div style="text-align: left;"> In this part, you will evaluate the different actions that a person in a certain situation can choose.
+    <br><br> You should evaluate the actions according to <b>your own opinion</b> and independently of the opinion of others.
+    <br><br> Each time, decide whether it is <b>appropriate or not to choose it</b>.
+    <br> “Appropriate” means that you personally consider the action to be “correct” or “moral”.
+    <br><br> The standard is <b>your personal opinion, not to the opinion of others</b>.
+    <br> There are no right or wrong answers. Please answer honestly.
+          <br><br>
+          Press <b>SPACE</b> to begin!
+          </div>`,
+      choices: [' ']
+    };
+
+    var pndg_intro2 = {
+      type: jsPsychHtmlKeyboardResponse,
+      stimulus: `
+      <div style="text-align: left;">In this study, from all participants, we will draw two random people (Person A and Person B). They are anonymous, so no one will know who they are.
+    <br><br> Person A makes a decisions. Person B will learn what the situation was and what decision Person A made.
+    <br> Person A's decision will be paid to themselves and to Person B as a bonus payment.
+    <br><br> Person A has 100 points. 100 points are worth 0.01£. <b>Person A can give some or all of the 100 points to Person B.</b>
+    <br> Whatever Person A gives, they keep the rest themselves.
+       <br><br>
+       Press <b>SPACE</b> to move on!
+       </div> `,
+      choices: [' ']
+    };
+
+
+
+           // Define the Likert scale labels
+   var pndg_scale_labels = [
+    "1 <br> Very inappropriate",
+    "2 <br> Inappropriate",
+    "3 <br> Rather inappropriate",
+    "4 <br> Rather appropriate",
+    "5 <br> Appropriate", 
+    "5 <br> Very appropriate"
+  ];
+
+  var pndg_pageone= {
+   type: jsPsychSurveyLikert,
+   preamble: `
+   <br> Please evaluate the possible actions of Person A. 
+   <br> 
+   <br> Remember to evaluate according to <b>your own personal opinion</b> and not the opinion of others.
+   </div>`,
+   questions: [
+     {prompt: "A gives B 0 points.", name: 'pndg0', labels: pndg_scale_labels, required: true},
+     {prompt: "A gives B 10 points.", name: 'pndg10', labels: pndg_scale_labels, required: true},
+     {prompt: "A gives B 20 points.", name: 'pndg20', labels: pndg_scale_labels, required: true},
+     {prompt: "A gives B 30 points.", name: 'pndg30', labels: pndg_scale_labels, required: true},
+     {prompt: "A gives B 40 points.", name: 'pndg40', labels: pndg_scale_labels, required: true},
+     {prompt: "A gives B 50 points.", name: 'pndg50', labels: pndg_scale_labels, required: true},
+     {prompt: "A gives B 60 points.", name: 'pndg60', labels: pndg_scale_labels, required: true},
+     {prompt: "A gives B 70 points.", name: 'pndg70', labels: pndg_scale_labels, required: true},
+     {prompt: "A gives B 80 points.", name: 'pndg80', labels: pndg_scale_labels, required: true},
+     {prompt: "A gives B 90 points.", name: 'pndg90', labels: pndg_scale_labels, required: true},
+     {prompt: "A gives B 100 points.", name: 'pndg100', labels: pndg_scale_labels, required: true},
+     ],
+   randomize_question_order: false, 
+ };
+
+
+ ///////////////////////////////////////////////////////////////////////////////////////////////////
+//Social Norms DG ////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+var sndg_intro = {
+  type: jsPsychHtmlKeyboardResponse,
+  stimulus: `
+ <div style="text-align: left;"> In this part, you will again evaluate the different actions that a person in a certain situation can choose.
+    <br><br> You should evaluate the actions according to <b>the opinion of the society</b> and independently your own opinion.
+    <br><br> Each time, decide whether it is <b>appropriate or not to choose it</b>.
+    <br> “Appropriate” means that you personally consider the action to be “correct” or “moral”.
+    <br><br> The standard is <b>the opinion of the society, not your own opinion</b>.
+    <br> Please answer as precisely as you can.
+    <br><br> In this part, you can earn a bonus payment. How much you get depends on your and the other participants' answers.
+    <br> At the end of the study, we will check which answers most people gave. 
+    <br><b>When your answers is the same as the most common answer, you get 0.10£.</b> If all your answers match the most common answers, you get 1£. 
+          <br><br>
+          Press <b>SPACE</b> to begin!
+          </div>`,
+  choices: [' ']
+};
+
+var sndg_intro2 = {
+  type: jsPsychHtmlKeyboardResponse,
+  stimulus: `
+  <div style="text-align: left;">In this study, from all participants, we will draw two random people (Person A and Person B). They are anonymous, so no one will know who they are.
+<br><br> Person A makes a decisions. Person B will learn what the situation was and what decision Person A made.
+<br> Person A's decision will be paid to themselves and to Person B as a bonus payment.
+<br><br> Person A has 100 points. 100 points are worth 0.01£. <b>Person A can give some or all of the 100 points to Person B.</b>
+<br> Whatever Person A gives, they keep the rest themselves.
+   <br><br>
+   Press <b>SPACE</b> to move on!
+   </div> `,
+  choices: [' ']
+};
+
+
+
+       // Define the Likert scale labels
+var sndg_scale_labels = [
+"1 <br> Very inappropriate",
+"2 <br> Inappropriate",
+"3 <br> Rather inappropriate",
+"4 <br> Rather appropriate",
+"5 <br> Appropriate", 
+"5 <br> Very appropriate"
+];
+
+var sndg_pageone= {
+type: jsPsychSurveyLikert,
+preamble: `
+<br> Please evaluate the possible actions of Person A. 
+<br> 
+<br> Remember to evaluate according to the <b>opinion of the society</b> and not your own opinion. <br>You will earn 0.10£ for each answer that is the same as the <b>most common answer</b> among all participants.
+</div>`,
+questions: [
+ {prompt: "A gives B 0 points.", name: 'sndg0', labels: sndg_scale_labels, required: true},
+ {prompt: "A gives B 10 points.", name: 'sndg10', labels: sndg_scale_labels, required: true},
+ {prompt: "A gives B 20 points.", name: 'sndg20', labels: sndg_scale_labels, required: true},
+ {prompt: "A gives B 30 points.", name: 'sndg30', labels: sndg_scale_labels, required: true},
+ {prompt: "A gives B 40 points.", name: 'sndg40', labels: sndg_scale_labels, required: true},
+ {prompt: "A gives B 50 points.", name: 'sndg50', labels: sndg_scale_labels, required: true},
+ {prompt: "A gives B 60 points.", name: 'sndg60', labels: sndg_scale_labels, required: true},
+ {prompt: "A gives B 70 points.", name: 'sndg70', labels: sndg_scale_labels, required: true},
+ {prompt: "A gives B 80 points.", name: 'sndg80', labels: sndg_scale_labels, required: true},
+ {prompt: "A gives B 90 points.", name: 'sndg90', labels: sndg_scale_labels, required: true},
+ {prompt: "A gives B 100 points.", name: 'sndg100', labels: sndg_scale_labels, required: true},
+ ],
+randomize_question_order: false, 
+};
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 //Social Norm Espousal/////////////////////////////////////////////////////////////////////////////////////////////////
@@ -489,7 +630,7 @@ const glasses_screening = {
 
    var SNE_pageone = {
     type: jsPsychSurveyLikert,
-    preamble: "In this first task, please rate the extent to which the statements below are characteristic of you or what you believe. There are no right or wrong answers.",
+    preamble: "In this task, please rate the extent to which the statements below are characteristic of you or what you believe. There are no right or wrong answers.",
     questions: [
       {prompt: "I go out of my way to follow social norms.", name: 'SNE1', labels: SNE_scale_labels, required: true},
       {prompt: "We shouldn't always have to follow a set of social rules.", name: 'SNE2', labels: SNE_scale_labels, required: true},
@@ -851,12 +992,15 @@ var choice_instructions1 = {
 var choice_instructions2 = {
   type: jsPsychHtmlKeyboardResponse,
   stimulus: function() {
-    return ` <p> In each round, you will also see two additional pieces of information:</p>
-        <p> <b>Rule</b>    and    <b>Other's Random Number</b>. </br></br> </p>
-        <p> <b>Rule</b>: This information tells you to choose Option F (left) or Option J (right).</br>
-        <p> <b>Other's Random Number</b>: This information tells you a random number that belongs to the other participant. It can be any number up to 99. </br>
-        Every person gets a random number in this study.</p>
-        <p>Press <b>SPACE</b> to see an example!</p>  
+    return `   <p> In each round, you will also see two additional pieces of information:</p>
+  <p> <b>Rule</b>    and    <b>Other's Random Number</b>. </br></br> </p>
+  <p> <b>Majority Rule</b>: This information tells you what <b>most people (the majority) chose </b> in each task:  Option F (left) or Option J (right). 
+  </br>In earlier studies, we asked people to make decision in tasks about the same tradeoff of points that you will face. We now show you what most people in a subsample chose then. 
+  </br>This information can help you understand the decision situation you will be in. It also helps you think about what other decision makers have choosen. 
+</br>In a way, this means that these people would tell you that <b>you should choose Option F (left) or Option J (right)</b>.</br>
+  <p> <b>Other's Random Number</b>: This information tells you a random number that belongs to the other participant. It can be any number up to 99. </br>
+  Every person gets a random number in this study.</p>
+  <p>Press <b>SPACE</b> to see an example!</p> 
       `;
 
   },
@@ -902,7 +1046,7 @@ var choice_instructions3 = {
   <ul>
   <li>How many points you get if you choose Option F (left) or J (right).</li>
   <li>How many points the other person get if you choose Option F(left) or J (right).</li> 
-  <li>If rule is to choose F(left) or J (right). </li>
+  <li>If the majority rule is to choose F(left) or J (right). </li>
   <li>What random number the other person has.</li>
   </ul></p> 
   </div> </br> </br>
@@ -968,7 +1112,7 @@ var comprehension_check2 = {
       </div>
       <p>Look at this example again.<br>
 
-      What option does the <b>rule</b> indicate? Click on the answer!</p>`
+      What option does the <b>majority rule</b> indicate? This means most people chose this option. Click on the answer!</p>`
     },
     choices: ['F', 'J'], 
     required: true,
@@ -988,8 +1132,8 @@ var comprehension_feedback2 = {
     <img height="200px" src="${imgSrc}"><br/>
     <br>
     </div>
-    <p>In this example, the rule is to choose <b>Option F</b>. You can tell because there is an <b>F</b> shown.</p>
-    <p>When the rule is to choose <b>Option J</b>, there is a <b>J</b> shown.</p>`;
+    <p>In this example, the majority rule is to choose <b>Option F</b>. This means most people chose this option. You can tell because there is an <b>F</b> shown.</p>
+    <p>When the majority rule is to choose <b>Option J</b>, there is a <b>J</b> shown.</p>`;
     }, 
   choices: ['OK I understand'],
   required: true
@@ -1369,11 +1513,21 @@ var feedback = {
         timeline.push(calibration);
         timeline.push(donecursor);
 
-          // social norm espousal
+        // Personal Norms Dictator Game
+        timeline.push(pndg_intro);
+        timeline.push(pndg_intro2);
+        timeline.push(pndg_pageone);
+
+        // social norm espousal
         timeline.push(SNE_pageone);
         timeline.push(SNE_pagetwo);
         timeline.push(SNE_pagethree);
         timeline.push(SNE_pagefour);
+
+        // other check for buffer
+        timeline.push(eslcheck_trial);
+        timeline.push(country_survey_trial);
+        timeline.push(demographics);
 
         // SVO
         timeline.push(SVO_instruction);
@@ -1414,7 +1568,7 @@ var feedback = {
                     return `<p>Invalid response. Please try again.</p>`;
                 }
             },
-            choices: ['Next'], // Just a button to proceed
+            choices: ['Next'], 
         });
         timeline.push(feedback_ballcheck1);
         timeline.push({
@@ -1441,7 +1595,7 @@ var feedback = {
                     return `<p>Invalid response. Please try again.</p>`;
                 }
             },
-            choices: ['Next'], // Just a button to proceed
+            choices: ['Next'], 
         });
         timeline.push(feedback_ballcheck2);
 // BALL GAME
@@ -1499,7 +1653,7 @@ var feedback = {
                     return `<p>Invalid response. Please try again.</p>`;
                 }
             },
-            choices: ['Next'], // Just a button to proceed
+            choices: ['Next'], 
         });
         timeline.push(comprehension_feedback1);
         timeline.push({
@@ -1528,7 +1682,7 @@ var feedback = {
                     return `<p>Invalid response. Please try again.</p>`;
                 }
             },
-            choices: ['Next'], // Just a button to proceed
+            choices: ['Next'], 
         });
         timeline.push(comprehension_feedback2);
         timeline.push({
@@ -1567,7 +1721,7 @@ var feedback = {
                     return `<p>Invalid response. Please try again.</p>`;
                 }
             },
-            choices: ['Next'], // Just a button to proceed
+            choices: ['Next'], 
         });
         timeline.push(comprehension_feedback3);
 // DICTATOR GAME
@@ -1591,10 +1745,11 @@ var feedback = {
 
         // other check
         timeline.push(visioncheck_trial);
-        timeline.push(eslcheck_trial);
-        timeline.push(country_survey_trial);
-        timeline.push(demographics);
 
+        // Social Norms Dictator Game
+        timeline.push(sndg_intro);
+        timeline.push(sndg_intro2);
+        timeline.push(sndg_pageone);
 
         // traffic light check 
        timeline.push(trafficlight_trial);
