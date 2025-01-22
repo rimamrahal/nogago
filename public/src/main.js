@@ -350,7 +350,7 @@ const glasses_screening = {
               <br>You can therefore only take part if you are NOT wearing glasses. 
               <br>It is ok to take part if you can take your glasses off now and still read very small print on the screen.
               <br><br> <div style="font-size: 10px !important;">If you cannot read this WITHOUT glasses, you cannot take part!</div> 
-              <br><br>Please be honest and indicate below if you can take part or not. If you cannot, you will still receive a payment of 5¢ for your time. We will redirect to back to Prolific.  
+              <br><br>Please be honest and indicate below if you can take part or not. If you cannot, you will still receive a payment of £0.10 for your time. We will redirect to back to Prolific.  
               <br><br><br>Please confirm that you are not wearing glasses and can proceed with this study.</p>
       `,
       choices: ['Not wearing glasses and can take part.', 'Wearing glasses and cannot take part.'],
@@ -522,7 +522,7 @@ const glasses_screening = {
   var pndg_pageone= {
    type: jsPsychSurveyLikert,
    preamble: `
-   <br> Please evaluate the possible actions of Person A. 
+   <br> Please evaluate the possible actions of Person A. Scroll down to see all possible actions. 
    <br> 
    <br> Remember to evaluate according to <b>your own personal opinion</b> and not the opinion of others.
    </div>`,
@@ -595,7 +595,7 @@ var sndg_scale_labels = [
 var sndg_pageone= {
 type: jsPsychSurveyLikert,
 preamble: `
-<br> Please evaluate the possible actions of Person A. 
+<br> Please evaluate the possible actions of Person A. Scroll down to see all possible actions. 
 <br> 
 <br> Remember to evaluate according to the <b>opinion of the society</b> and not your own opinion. <br>You will earn 0.10£ for each answer that is the same as the <b>most common answer</b> among all participants.
 </div>`,
@@ -886,11 +886,11 @@ var ball_prac_choice = {
   }
 
 
-    // RUN CALIBRATION PROCEDURE BEFORE TRIALS 0, 12, 24, 36, 48 
+    // RUN CALIBRATION PROCEDURE BEFORE TRIALS 0, 15, 30, 45 
     var ball_if_node1 = {
       timeline: [cali_vali_instructions ,fixation_cali, fixation1],
       conditional_function: function(){
-          if(ball_real_choice_counts == 0 || ball_real_choice_counts == 12 || ball_real_choice_counts == 24 || ball_real_choice_counts == 36 || ball_real_choice_counts == 48){
+          if(ball_real_choice_counts == 0 || ball_real_choice_counts == 15 || ball_real_choice_counts == 30 || ball_real_choice_counts == 45){
               return true;
           } else {
               return false;
@@ -898,11 +898,11 @@ var ball_prac_choice = {
       }
     }
     
-  // RUN FIXATION CROSS FOR TRIALS THAT ARE NOT 0, 12, 24, 36, 48 
+  // RUN FIXATION CROSS FOR TRIALS THAT ARE NOT 0, 15, 30, 45 
   var ball_if_node2 = {
     timeline: [fixation],
     conditional_function: function(){
-        if(ball_real_choice_counts != 0 && ball_real_choice_counts != 12 && ball_real_choice_counts != 24  && ball_real_choice_counts != 36 && ball_real_choice_counts != 48 ){
+        if(ball_real_choice_counts != 0 && ball_real_choice_counts != 15 && ball_real_choice_counts != 30  && ball_real_choice_counts != 45){
             return true;
         } else {
             return false;
@@ -1234,11 +1234,11 @@ var charity_prac_choice = {
 
 
 
-    // RUN CALIBRATION PROCEDURE BEFORE TRIALS 0, 12, 24, 36, 48 
+    // RUN CALIBRATION PROCEDURE BEFORE TRIALS 0, 15, 30, 45 
     var if_node1 = {
         timeline: [cali_vali_instructions ,fixation_cali, fixation1],
         conditional_function: function(){
-            if(real_choice_counts == 0 || real_choice_counts == 12 || real_choice_counts == 24 || real_choice_counts == 36 || real_choice_counts == 48){
+            if(real_choice_counts == 0 || real_choice_counts == 15 || real_choice_counts == 30 || real_choice_counts == 45){
                 return true;
             } else {
                 return false;
@@ -1246,11 +1246,11 @@ var charity_prac_choice = {
         }
       }
       
-    // RUN FIXATION CROSS FOR TRIALS THAT ARE NOT 0, 12, 24, 36, 48 
+    // RUN FIXATION CROSS FOR TRIALS THAT ARE NOT 0, 15, 30, 45 
     var if_node2 = {
       timeline: [fixation],
       conditional_function: function(){
-          if(real_choice_counts != 0 && real_choice_counts != 12 && real_choice_counts != 24  && real_choice_counts != 36 && real_choice_counts != 48 ){
+          if(real_choice_counts != 0 && real_choice_counts != 15 && real_choice_counts != 30  && real_choice_counts != 45){
               return true;
           } else {
               return false;
@@ -1467,10 +1467,12 @@ var feedback = {
         jsPsych.data.addProperties({
             browser_name: bowser.name,
             browser_type: bowser.version,
-            subject: subject_id,
-            payoff_order: participant_payoff_order,
-            otherplayer_order: participant_otherinfo_order,
-            rule_order: participant_ball_order,
+            subject_id: subject_id,
+            participant_payoff_order: participant_payoff_order,
+            participant_otherinfo_order: participant_otherinfo_order,
+            participant_ball_order: participant_ball_order,
+            participant_LMR_order: participant_LMR_order,
+            participant_LR_order: participant_LR_order,
             interaction: jsPsych.data.getInteractionData().json(),
             windowWidth: screen.width,
             windowHeight: screen.height
