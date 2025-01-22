@@ -359,7 +359,7 @@ const glasses_screening = {
           // Check if the answer is "Cannot take part"
           if (data.response === 1) {  // 0 corresponds to the first button ("Yes")
               // If they are wearing glasses, redirect and end the experiment
-              window.location.href = "https://app.prolific.com/submissions/complete?cc=C13ES2ZQ";  // Replace with your desired URL
+              window.location.href = "https://app.prolific.com/submissions/complete?cc=C13ES2ZQ";  // Redirect to prolific
           } else {
               // Otherwise, continue with the experiment
               console.log("Participant chose no glasses, continuing the experiment.");
@@ -499,7 +499,7 @@ const glasses_screening = {
       <div style="text-align: left;">In this study, from all participants, we will draw two random people (Person A and Person B). They are anonymous, so no one will know who they are.
     <br><br> Person A makes a decisions. Person B will learn what the situation was and what decision Person A made.
     <br> Person A's decision will be paid to themselves and to Person B as a bonus payment.
-    <br><br> Person A has 100 points. 100 points are worth 0.01£. <b>Person A can give some or all of the 100 points to Person B.</b>
+    <br><br> Person A has 100 points. 100 points are worth 0.30£. <b>Person A can give some or all of the 100 points to Person B.</b>
     <br> Whatever Person A gives, they keep the rest themselves.
        <br><br>
        Press <b>SPACE</b> to move on!
@@ -572,7 +572,7 @@ var sndg_intro2 = {
   <div style="text-align: left;">In this study, from all participants, we will draw two random people (Person A and Person B). They are anonymous, so no one will know who they are.
 <br><br> Person A makes a decisions. Person B will learn what the situation was and what decision Person A made.
 <br> Person A's decision will be paid to themselves and to Person B as a bonus payment.
-<br><br> Person A has 100 points. 100 points are worth 0.01£. <b>Person A can give some or all of the 100 points to Person B.</b>
+<br><br> Person A has 100 points. 100 points are worth 0.30£. <b>Person A can give some or all of the 100 points to Person B.</b>
 <br> Whatever Person A gives, they keep the rest themselves.
    <br><br>
    Press <b>SPACE</b> to move on!
@@ -630,7 +630,7 @@ randomize_question_order: false,
 
    var SNE_pageone = {
     type: jsPsychSurveyLikert,
-    preamble: "In this task, please rate the extent to which the statements below are characteristic of you or what you believe. There are no right or wrong answers.",
+    preamble: "In this task, we will ask you about your attitudes towards social norms (shared rules or expectations of how people should behave in society). Please rate the extent to which the statements below are characteristic of you or what you believe. There are no right or wrong answers.",
     questions: [
       {prompt: "I go out of my way to follow social norms.", name: 'SNE1', labels: SNE_scale_labels, required: true},
       {prompt: "We shouldn't always have to follow a set of social rules.", name: 'SNE2', labels: SNE_scale_labels, required: true},
@@ -923,7 +923,7 @@ var ball_prac_choice = {
       ball_if_node2,
       {
         type: jsPsychBinaryChoiceTableFourBall,
-        stimulus: () => ball_data_b1[ball_real_choice_counts%10],
+        stimulus: () => ball_data_b1[ball_real_choice_counts],
         choices: ["F", "J"],
         realOrPrac: true,
         participant_ball_order: participant_ball_order,
@@ -943,7 +943,7 @@ var ball_prac_choice = {
         ]
       }
     ],
-    loop_function: () => ball_real_choice_counts < 5, // set number of trials here, maybe make it 50
+    loop_function: () => ball_real_choice_counts < 50, // set number of trials here, you have 50 items
   };
 
   var donecursor = {
@@ -1271,7 +1271,7 @@ var charity_prac_choice = {
         if_node2,
         {
           type: jsPsychBinaryChoiceTableFour,
-          stimulus: () => stimuli_data_b1[real_choice_counts%10],
+          stimulus: () => stimuli_data_b1[real_choice_counts],
           choices: ["F", "J"],
           realOrPrac: true,
           payoffYouTop: participant_payoff_order,
@@ -1292,7 +1292,7 @@ var charity_prac_choice = {
           ]
         }
       ],
-      loop_function: () => real_choice_counts < 5, // set number of trials here, maybe make it 60
+      loop_function: () => real_choice_counts < 60, // set number of trials here, you have 60 items
     };
 
 
