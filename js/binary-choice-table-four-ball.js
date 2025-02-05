@@ -128,20 +128,20 @@ var jsPsychBinaryChoiceTableFourBall = (function (jspsych) {
                     <col span="1" style="width: 50%; border-left: 1px gray solid;">
                     </colgroup>
                 <tr style="height:10%;">
-                <th style="vertical-align: top; ">${trial.participant_ball_order ? 'Rule' : 'Bucket F'}</th>
-                <th style="vertical-align: top; ">${trial.participant_ball_order ? 'Ball' : 'Bucket J'}</th>
+                <th style="vertical-align: top; " id="top-left">${trial.participant_ball_order ? 'Rule' : 'Bucket F'}</th>
+                <th style="vertical-align: top; " id="top-right">${trial.participant_ball_order ? 'Ball' : 'Bucket J'}</th>
                  </tr>
                  <tr style="vertical-align: center; height: 40%;">
                 <td style="text-align: center; " id="up-left">${trial.participant_ball_order ? trial.stimulus['rule'] : trial.stimulus['F'].toFixed(0) } </td>
-                <td style="text-align: center;   ">${trial.participant_ball_order ? trial.stimulus['random'].toFixed(0) : trial.stimulus['J'].toFixed(0) }</td>
+                <td style="text-align: center;   " id="up-right">${trial.participant_ball_order ? trial.stimulus['random'].toFixed(0) : trial.stimulus['J'].toFixed(0) }</td>
                 </tr>
                  <tr style="vertical-align: center; height: 40%;">
-                <td style="text-align: center;  border-top: 1px gray solid;"> ${trial.participant_ball_order ? trial.stimulus['F'].toFixed(0) : trial.stimulus['rule']  }</td>     
-                <td style="text-align: center;   border-top: 1px gray solid;"> ${trial.participant_ball_order ? trial.stimulus['J'].toFixed(0) : trial.stimulus['random'].toFixed(0) } </td>
+                <td style="text-align: center;  border-top: 1px gray solid;"  id="down-left"> ${trial.participant_ball_order ? trial.stimulus['F'].toFixed(0) : trial.stimulus['rule']  }</td>     
+                <td style="text-align: center;   border-top: 1px gray solid;"  id="down-right"> ${trial.participant_ball_order ? trial.stimulus['J'].toFixed(0) : trial.stimulus['random'].toFixed(0) } </td>
                 </tr>
                 <tr style="height:10%;">
-                <th style="vertical-align: bottom;  height: 25px;">${trial.participant_ball_order ? 'Bucket F' : 'Rule'}</th>
-                <th style="vertical-align: bottom; ">${trial.participant_ball_order ? 'Bucket J' : 'Ball'}</th>
+                <th style="vertical-align: bottom;  height: 25px; " id="bottom-left">${trial.participant_ball_order ? 'Bucket F' : 'Rule'}</th>
+                <th style="vertical-align: bottom; " id="bottom-right">${trial.participant_ball_order ? 'Bucket J' : 'Ball'}</th>
                 </tr>
                   
                     </table>
@@ -165,20 +165,20 @@ var jsPsychBinaryChoiceTableFourBall = (function (jspsych) {
                     <col span="1" style="width: 50%; border-left: 1px gray solid;">
                     </colgroup>
                 <tr style="height:10%;">
-                <th style="vertical-align: top; ">${trial.participant_ball_order ? 'Ball' : 'Bucket F'}</th>
-                <th style="vertical-align: top; ">${trial.participant_ball_order ? 'Rule' : 'Bucket J'}</th>
+                <th style="vertical-align: top; " id="top-left">${trial.participant_ball_order ? 'Ball' : 'Bucket F'}</th>
+                <th style="vertical-align: top; " id="top-right">${trial.participant_ball_order ? 'Rule' : 'Bucket J'}</th>
                  </tr>
                  <tr style="vertical-align: center; height: 40%;">
                 <td style="text-align: center; " id="up-left">${trial.participant_ball_order ? trial.stimulus['random'].toFixed(0) : trial.stimulus['F'].toFixed(0) } </td>
-                <td style="text-align: center;   ">${trial.participant_ball_order ? trial.stimulus['rule'] : trial.stimulus['J'].toFixed(0) }</td>
+                <td style="text-align: center;   " id="up-right">${trial.participant_ball_order ? trial.stimulus['rule'] : trial.stimulus['J'].toFixed(0) }</td>
                 </tr>
                  <tr style="vertical-align: center; height: 40%;">
-                <td style="text-align: center;  border-top: 1px gray solid;"> ${trial.participant_ball_order ? trial.stimulus['F'].toFixed(0) : trial.stimulus['random'].toFixed(0)  }</td>     
-                <td style="text-align: center;   border-top: 1px gray solid;"> ${trial.participant_ball_order ? trial.stimulus['J'].toFixed(0) : trial.stimulus['rule'] } </td>
+                <td style="text-align: center;  border-top: 1px gray solid;"  id="down-left"> ${trial.participant_ball_order ? trial.stimulus['F'].toFixed(0) : trial.stimulus['random'].toFixed(0)  }</td>     
+                <td style="text-align: center;   border-top: 1px gray solid;"  id="down-right"> ${trial.participant_ball_order ? trial.stimulus['J'].toFixed(0) : trial.stimulus['rule'] } </td>
                 </tr>
                 <tr style="height:10%;">
-                <th style="vertical-align: bottom;  height: 25px;">${trial.participant_ball_order ? 'Bucket F' : 'Ball'}</th>
-                <th style="vertical-align: bottom; ">${trial.participant_ball_order ? 'Bucket J' : 'Rule'}</th>
+                <th style="vertical-align: bottom;  height: 25px;"   id="bottom-left">${trial.participant_ball_order ? 'Bucket F' : 'Ball'}</th>
+                <th style="vertical-align: bottom; "  id="bottom-right">${trial.participant_ball_order ? 'Bucket J' : 'Rule'}</th>
                 </tr>
                   
                     </table>

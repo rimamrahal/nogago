@@ -170,24 +170,24 @@ var jsPsychBinaryChoiceTableFour = (function (jspsych) {
                         <col span="1" style="width: 33%; border-left: 1px gray solid;">
                       </colgroup>
                       <tr style="height:10%;">
-                        <th style="vertical-align: top; ">Option F: ${trial.payoffYouTop ? 'You get' : 'Other gets'}</th>
-                        <th style="vertical-align: top; ">${trial.payoffRuleTop ? 'Majority Rule ': 'Other´s Random Number'}</th>
-                        <th style="vertical-align: top; ">Option J: ${trial.payoffYouTop ? 'You get' : 'Other gets'}</th>
+                        <th style="vertical-align: top; " id="top-left">Option F: ${trial.payoffYouTop ? 'You get' : 'Other gets'}</th>
+                        <th style="vertical-align: top; " id="top-middle">${trial.payoffRuleTop ? 'Majority Rule ': 'Other&rsquo;s Random Number'}</th>
+                        <th style="vertical-align: top; " id="top-right">Option J: ${trial.payoffYouTop ? 'You get' : 'Other gets'}</th>
                       </tr>
                       <tr style="vertical-align: center; height: 40%;">
                         <td style="text-align: center; " id="up-left">${trial.payoffYouTop ? trial.stimulus['s1'].toFixed(0) : trial.stimulus['o1'].toFixed(0) } </td>
-                        <td style="text-align: center;  ">${trial.payoffRuleTop ? trial.stimulus['rule'] : trial.stimulus['random'].toFixed(0)}</td>
-                        <td style="text-align: center;   ">${trial.payoffYouTop ? trial.stimulus['s2'].toFixed(0) : trial.stimulus['o2'].toFixed(0) }</td>
+                        <td style="text-align: center;  " id="up-middle">${trial.payoffRuleTop ? trial.stimulus['rule'] : trial.stimulus['random'].toFixed(0)}</td>
+                        <td style="text-align: center;   " id="up-right">${trial.payoffYouTop ? trial.stimulus['s2'].toFixed(0) : trial.stimulus['o2'].toFixed(0) }</td>
                     </tr>
                     <tr style="vertical-align: center; height: 40%;">
-                        <td style="text-align: center;  border-top: 1px gray solid;"> ${trial.payoffYouTop ? trial.stimulus['o1'].toFixed(0) : trial.stimulus['s1'].toFixed(0) }</td>     
-                        <td style="text-align: center;   border-top: 1px gray solid;"" id="bottom-right">${trial.payoffRuleTop ? trial.stimulus['random'].toFixed(0) : trial.stimulus['rule']}</td>
-                        <td style="text-align: center;   border-top: 1px gray solid;"> ${trial.payoffYouTop ? trial.stimulus['o2'].toFixed(0) : trial.stimulus['s2'].toFixed(0) } </td>
+                        <td style="text-align: center;  border-top: 1px gray solid;" id="down-left"> ${trial.payoffYouTop ? trial.stimulus['o1'].toFixed(0) : trial.stimulus['s1'].toFixed(0) }</td>     
+                        <td style="text-align: center;   border-top: 1px gray solid;"  id="down-middle">${trial.payoffRuleTop ? trial.stimulus['random'].toFixed(0) : trial.stimulus['rule']}</td>
+                        <td style="text-align: center;   border-top: 1px gray solid;"  id="down-right"> ${trial.payoffYouTop ? trial.stimulus['o2'].toFixed(0) : trial.stimulus['s2'].toFixed(0) } </td>
                     </tr>
                       <tr style="height:10%;">
-                  <th style="vertical-align: bottom;  height: 25px;">Option F: ${trial.payoffYouTop ? 'Other gets' : 'You get'}</th>
-                  <th style="vertical-align: bottom; ">${trial.payoffRuleTop ? 'Other&rsquo;s Random Number' : 'Majority Rule '}</th>
-                  <th style="vertical-align: bottom; ">Option J: ${trial.payoffYouTop ? 'Other gets' : 'You get'}</th>
+                  <th style="vertical-align: bottom;  height: 25px;"  id="bottom-left">Option F: ${trial.payoffYouTop ? 'Other gets' : 'You get'}</th>
+                  <th style="vertical-align: bottom; "  id="bottom-middle">${trial.payoffRuleTop ? 'Other&rsquo;s Random Number' : 'Majority Rule '}</th>
+                  <th style="vertical-align: bottom; "  id="bottom-right">Option J: ${trial.payoffYouTop ? 'Other gets' : 'You get'}</th>
                   </tr>
                 
                   </table>
@@ -212,24 +212,24 @@ var jsPsychBinaryChoiceTableFour = (function (jspsych) {
                         <col span="1" style="width: 33%; border-left: 1px gray solid;">
                       </colgroup>
                       <tr style="height:10%;">
-                        <th style="vertical-align: top; ">Option F: ${trial.payoffYouTop ? 'You get' : 'Other gets'}</th>
-                        <th style="vertical-align: top; ">Option J: ${trial.payoffYouTop ? 'You get' : 'Other gets'}</th>
-                        <th style="vertical-align: top; ">${trial.payoffRuleTop ? 'Majority Rule ': 'Other´s Random Number'}</th>
+                        <th style="vertical-align: top; " id="top-left">Option F: ${trial.payoffYouTop ? 'You get' : 'Other gets'}</th>
+                        <th style="vertical-align: top; " id="top-middle">Option J: ${trial.payoffYouTop ? 'You get' : 'Other gets'}</th>
+                        <th style="vertical-align: top; " id="top-right">${trial.payoffRuleTop ? 'Majority Rule ': 'Other&rsquo;s Random Number'}</th>
                       </tr>
                       <tr style="vertical-align: center; height: 40%;">
                         <td style="text-align: center; " id="up-left">${trial.payoffYouTop ? trial.stimulus['s1'].toFixed(0) : trial.stimulus['o1'].toFixed(0) } </td>
-                        <td style="text-align: center;   ">${trial.payoffYouTop ? trial.stimulus['s2'].toFixed(0) : trial.stimulus['o2'].toFixed(0) }</td>
-                        <td style="text-align: center;  ">${trial.payoffRuleTop ? trial.stimulus['rule'] : trial.stimulus['random'].toFixed(0)}</td>
+                        <td style="text-align: center;   "  id="up-middle">${trial.payoffYouTop ? trial.stimulus['s2'].toFixed(0) : trial.stimulus['o2'].toFixed(0) }</td>
+                        <td style="text-align: center;  " id="up-right">${trial.payoffRuleTop ? trial.stimulus['rule'] : trial.stimulus['random'].toFixed(0)}</td>
                     </tr>
                     <tr style="vertical-align: center; height: 40%;">
-                        <td style="text-align: center;  border-top: 1px gray solid;"> ${trial.payoffYouTop ? trial.stimulus['o1'].toFixed(0) : trial.stimulus['s1'].toFixed(0) }</td>     
-                        <td style="text-align: center;   border-top: 1px gray solid;"> ${trial.payoffYouTop ? trial.stimulus['o2'].toFixed(0) : trial.stimulus['s2'].toFixed(0) } </td>
-                        <td style="text-align: center;   border-top: 1px gray solid;"f" id="bottom-right">${trial.payoffRuleTop ? trial.stimulus['random'].toFixed(0) : trial.stimulus['rule']}</td>
+                        <td style="text-align: center;  border-top: 1px gray solid;" id="down-left"> ${trial.payoffYouTop ? trial.stimulus['o1'].toFixed(0) : trial.stimulus['s1'].toFixed(0) }</td>     
+                        <td style="text-align: center;   border-top: 1px gray solid;" id="down-middle"> ${trial.payoffYouTop ? trial.stimulus['o2'].toFixed(0) : trial.stimulus['s2'].toFixed(0) } </td>
+                        <td style="text-align: center;   border-top: 1px gray solid;"  id="down-right">${trial.payoffRuleTop ? trial.stimulus['random'].toFixed(0) : trial.stimulus['rule']}</td>
                     </tr>
                       <tr style="height:10%;">
-                  <th style="vertical-align: bottom;  height: 25px;">Option F: ${trial.payoffYouTop ? 'Other gets' : 'You get'}</th>
-                  <th style="vertical-align: bottom; ">Option J: ${trial.payoffYouTop ? 'Other gets' : 'You get'}</th>
-                  <th style="vertical-align: bottom; ">${trial.payoffRuleTop ? 'Other&rsquo;s Random Number' : 'Majority Rule '}</th>
+                  <th style="vertical-align: bottom;  height: 25px;"  id="bottom-left">Option F: ${trial.payoffYouTop ? 'Other gets' : 'You get'}</th>
+                  <th style="vertical-align: bottom; "  id="bottom-middle">Option J: ${trial.payoffYouTop ? 'Other gets' : 'You get'}</th>
+                  <th style="vertical-align: bottom; "  id="bottom-right">${trial.payoffRuleTop ? 'Other&rsquo;s Random Number' : 'Majority Rule '}</th>
                   </tr>
                 
                   </table>
