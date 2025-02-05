@@ -993,7 +993,7 @@ var choice_instructions2 = {
   type: jsPsychHtmlKeyboardResponse,
   stimulus: function() {
     return `   <p> In each round, you will also see two additional pieces of information:</p>
-  <p> <b>Rule</b>    and    <b>Other's Random Number</b>. </br></br> </p>
+  <p> <b>Majority Rule</b>    and    <b>Other's Random Number</b>. </br></br> </p>
   <p> <b>Majority Rule</b>: This information tells you what <b>most people (the majority) chose </b> in each task:  Option F (left) or Option J (right). 
   </br>In earlier studies, we asked people to make decision in tasks about the same tradeoff of points that you will face. We now show you what most people in a subsample chose then. 
   </br>This information can help you understand the decision situation you will be in. It also helps you think about what other decision makers have choosen. 
