@@ -630,7 +630,7 @@ randomize_question_order: false,
 
    var SNE_pageone = {
     type: jsPsychSurveyLikert,
-    preamble: "In this task, we will ask you about your attitudes towards social norms (shared rules or expectations of how people should behave in society). Please rate the extent to which the statements below are characteristic of you or what you believe. There are no right or wrong answers.",
+    preamble: "In this task, we will ask you about your attitudes towards social norms (shared rules or expectations of how people should behave in society). <br>Please rate the extent to which the statements below are characteristic of you or what you believe. There are no right or wrong answers.",
     questions: [
       {prompt: "I go out of my way to follow social norms.", name: 'SNE1', labels: SNE_scale_labels, required: true},
       {prompt: "We shouldn't always have to follow a set of social rules.", name: 'SNE2', labels: SNE_scale_labels, required: true},
@@ -886,11 +886,11 @@ var ball_prac_choice = {
   }
 
 
-    // RUN CALIBRATION PROCEDURE BEFORE TRIALS 0, 15, 30, 45 
+    // RUN CALIBRATION PROCEDURE BEFORE TRIALS 0, 12, 24, 36 
     var ball_if_node1 = {
       timeline: [cali_vali_instructions ,fixation_cali, fixation1],
       conditional_function: function(){
-          if(ball_real_choice_counts == 0 || ball_real_choice_counts == 15 || ball_real_choice_counts == 30 || ball_real_choice_counts == 45){
+          if(ball_real_choice_counts == 0 || ball_real_choice_counts == 12 || ball_real_choice_counts == 24 || ball_real_choice_counts == 36){
               return true;
           } else {
               return false;
@@ -898,11 +898,11 @@ var ball_prac_choice = {
       }
     }
     
-  // RUN FIXATION CROSS FOR TRIALS THAT ARE NOT 0, 15, 30, 45 
+  // RUN FIXATION CROSS FOR TRIALS THAT ARE NOT 0, 12, 24, 36 
   var ball_if_node2 = {
     timeline: [fixation],
     conditional_function: function(){
-        if(ball_real_choice_counts != 0 && ball_real_choice_counts != 15 && ball_real_choice_counts != 30  && ball_real_choice_counts != 45){
+        if(ball_real_choice_counts != 0 && ball_real_choice_counts != 12 && ball_real_choice_counts != 24  && ball_real_choice_counts != 36){
             return true;
         } else {
             return false;
