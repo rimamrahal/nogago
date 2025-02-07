@@ -490,7 +490,7 @@ const glasses_screening = {
     var pndg_intro = {
       type: jsPsychHtmlKeyboardResponse,
       stimulus: `
-     <div style="text-align: left;"> In this part, you will evaluate the different actions that a person in a certain situation can choose.
+     <div style="text-align: left;"> In the following task, you will evaluate the different actions that a person in a certain situation can choose.
     <br><br> You should evaluate the actions according to <b>your own opinion</b> and independently of the opinion of others.
     <br><br> Each time, decide whether it is <b>appropriate or not to choose it</b>.
     <br> “Appropriate” means that you personally consider the action to be “correct” or “moral”.
@@ -1534,9 +1534,6 @@ var feedback = {
         timeline.push(start_exp_survey_trial);
         timeline.push(fullscreenEnter);
 
-        // Screening questions
-        timeline.push(glasses_screening);
-
         // Webcam test
         timeline.push(webcam_test_instructions);
         timeline.push(calibration_instructions);
@@ -1546,6 +1543,9 @@ var feedback = {
         timeline.push(validation);
         timeline.push(recalibrate);
         timeline.push(donecursor);
+
+        // Screening questions
+        timeline.push(glasses_screening);
 
         // Personal Norms Dictator Game
         timeline.push(pndg_intro);
