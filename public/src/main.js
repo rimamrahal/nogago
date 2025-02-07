@@ -1506,7 +1506,7 @@ var feedback = {
         timeline.push(fullscreenEnter);
 
         // Screening questions
-        timeline.push(glasses_screening);
+//        timeline.push(glasses_screening);
 
         // Webcam test
         timeline.push(webcam_test_instructions);
@@ -1515,26 +1515,26 @@ var feedback = {
         timeline.push(calibration);
         timeline.push(donecursor);
 
-        // Personal Norms Dictator Game
-        timeline.push(pndg_intro);
-        timeline.push(pndg_intro2);
-        timeline.push(pndg_pageone);
-
-        // social norm espousal
-        timeline.push(SNE_pageone);
-        timeline.push(SNE_pagetwo);
-        timeline.push(SNE_pagethree);
-        timeline.push(SNE_pagefour);
-
-        // other check for buffer
-        timeline.push(eslcheck_trial);
-        timeline.push(country_survey_trial);
-        timeline.push(demographics);
-
-        // SVO
-        timeline.push(SVO_instruction);
-        timeline.push(SVO_trial_likert1);
-        timeline.push(SVO_trial_likert2);
+//        // Personal Norms Dictator Game
+//        timeline.push(pndg_intro);
+//        timeline.push(pndg_intro2);
+//        timeline.push(pndg_pageone);
+//
+//        // social norm espousal
+//        timeline.push(SNE_pageone);
+//        timeline.push(SNE_pagetwo);
+//        timeline.push(SNE_pagethree);
+//        timeline.push(SNE_pagefour);
+//
+//        // other check for buffer
+//        timeline.push(eslcheck_trial);
+//        timeline.push(country_survey_trial);
+//        timeline.push(demographics);
+//
+//        // SVO
+//        timeline.push(SVO_instruction);
+//        timeline.push(SVO_trial_likert1);
+//        timeline.push(SVO_trial_likert2);
 
         // balls
         timeline.push(ballintro);
@@ -1614,151 +1614,151 @@ var feedback = {
         timeline.push(donecursor);
 
 
-      // Dictator game
-        timeline.push(choice_instructions1);
-        timeline.push(choice_instructions2);
-        timeline.push(choice_instructions3);
-
-        timeline.push({
-            timeline: [comprehension_check1],
-            on_finish: function(data) {
-                jsPsych.data.addProperties({ comprehension_check1_response: data.response}); // Log response
-            }
-        });
-
-        timeline.push({
-            type: jsPsychHtmlButtonResponse,
-            stimulus: function() {
-                // Retrieve the response from the previous trial
-                const response = jsPsych.data.get().last(1).values()[0].comprehension_check1_response;
-                
-                // Change the displayed text based on the response
-                if (response === 0) {
-                    return `<p>You selected the correct response: 59!
-                        <br><br> Please look at the example and explanation again on the next page to familiarize yourself with the display.</p>`;
-                } else if (response === 1) {
-                    return `<p>You selected 56. That was not the right answer. 
-                        <br><br> You indicated the points the other person gets if you chose Option J. We were looking for what they get if you chose Option F.
-                        <br> The points for the other person when you choose Option F are displayed in the box that says "Option F: Other gets". 
-                        <br><br> Please look at the example and explanation again on the next page to familiarize yourself with the display.</p>`;
-                } else if (response === 2) {
-                    return `<p>You selected 22. That was not the right answer.
-                            <br><br> You indicated the points you would get if you chose Option F. We were looking for what the other person would get.
-                            <br> The points for the other person when you choose Option F are displayed in the box that says "Option F: Other gets".
-                            <br><br> Please look at the example and explanation again on the next page to familiarize yourself with the display.</p>`;
-                } else if (response === 3) {
-                    return `<p>You selected 15. That was not the right answer.
-                            <br><br> You indicated the points you get if you chose Option J. We were looking for what the other player would get if you chose Option F.
-                            <br> The points for the other person when you choose Option F are displayed in the box that says "Option F: Other gets".
-                            <br><br> Please look at the example and explanation again on the next page to familiarize yourself with the display.</p>`;
-                } else {
-                    return `<p>Invalid response. Please try again.</p>`;
-                }
-            },
-            choices: ['Next'], 
-        });
-        timeline.push(comprehension_feedback1);
-        timeline.push({
-            timeline: [comprehension_check2],
-            on_finish: function(data) {
-                jsPsych.data.addProperties({ comprehension_check2_response: data.response}); // Log response
-            }
-        });
-
-        timeline.push({
-            type: jsPsychHtmlButtonResponse,
-            stimulus: function() {
-                // Retrieve the response from the previous trial
-                const response = jsPsych.data.get().last(1).values()[0].comprehension_check2_response;
-                
-                // Change the displayed text based on the response
-                if (response === 0) {
-                    return `<p>You selected the correct response: F!
-                        <br><br> Please look at the example and explanation again on the next page to familiarize yourself with the display.</p>`;
-                } else if (response === 1) {
-                    return `<p>You selected J. That was not the right answer. 
-                        <br><br> You indicated that the rule points to Option J. It actually points to Option F.
-                        <br> The rule is displayed in the box with the titel "Rule" and indicates if you should choose option F or J. 
-                        <br><br> Please look at the example and explanation again on the next page to familiarize yourself with the display.</p>`;
-                 } else {
-                    return `<p>Invalid response. Please try again.</p>`;
-                }
-            },
-            choices: ['Next'], 
-        });
-        timeline.push(comprehension_feedback2);
-        timeline.push({
-            timeline: [comprehension_check3],
-            on_finish: function(data) {
-                jsPsych.data.addProperties({ comprehension_check3_response: data.response}); // Log response
-            }
-        });
-
-        timeline.push({
-            type: jsPsychHtmlButtonResponse,
-            stimulus: function() {
-                // Retrieve the response from the previous trial
-                const response = jsPsych.data.get().last(1).values()[0].comprehension_check3_response;
-                
-                // Change the displayed text based on the response
-                if (response === 0) {
-                    return `<p>You selected the correct response: 59! That was not the right answer. 
-                        <br><br> You indicated the points you would get if you chose Option F. We were looking for what you get if you chose Option J.
-                        <br> The points you get when you choose Option J are displayed in the box that says "Option J: You get". 
-                        <br><br> Please look at the example and explanation again on the next page to familiarize yourself with the display.</p>`;
-                } else if (response === 1) {
-                    return `<p>You selected 56. That was not the right answer.
-                            <br><br> You indicated the points the other player would get if you chose Option J. We were looking for what you would get.
-                            <br> The points you get when you choose Option J are displayed in the box that says "Option J: You get". 
-                        <br><br> Please look at the example and explanation again on the next page to familiarize yourself with the display.</p>`;
-                } else if (response === 2) {
-                    return `<p>You selected 22. That was not the right answer.
-                            <br><br> You indicated the points you would get if you chose Option F. We were looking for what you would get if you chose Option J.
-                        <br> The points you get when you choose Option J are displayed in the box that says "Option J: You get". 
-                            <br><br> Please look at the example and explanation again on the next page to familiarize yourself with the display.</p>`;
-                } else if (response === 3) {
-                    return `<p>You selected the correct response:15!
-                            <br><br> Please look at the example and explanation again on the next page to familiarize yourself with the display.</p>`;
-                } else {
-                    return `<p>Invalid response. Please try again.</p>`;
-                }
-            },
-            choices: ['Next'], 
-        });
-        timeline.push(comprehension_feedback3);
-// DICTATOR GAME
-        timeline.push(calibration_instructions);
-        timeline.push(init_camera);
-        timeline.push(calibration);
-        timeline.push(validation_instructions);
-        timeline.push(validation);
-        timeline.push(recalibrate);
-        timeline.push(task_instructions);
-        timeline.push(charity_prac_choice);
-        timeline.push(EnterRealChoice);
-        timeline.push(real_choice);
-        timeline.push(donecursor);
-
-
-        // lookcheck
-        timeline.push(lookcheck_trial);
-        timeline.push(selected_lookcheck);
-
-
-        // other check
-        timeline.push(visioncheck_trial);
-
-        // Social Norms Dictator Game
-        timeline.push(sndg_intro);
-        timeline.push(sndg_intro2);
-        timeline.push(sndg_pageone);
-
-        // traffic light check 
-       timeline.push(trafficlight_trial);
-
-
-        // end
-        timeline.push(feedback);
+//      // Dictator game
+//        timeline.push(choice_instructions1);
+//        timeline.push(choice_instructions2);
+//        timeline.push(choice_instructions3);
+//
+//        timeline.push({
+//            timeline: [comprehension_check1],
+//            on_finish: function(data) {
+//                jsPsych.data.addProperties({ comprehension_check1_response: data.response}); // Log response
+//            }
+//        });
+//
+//        timeline.push({
+//            type: jsPsychHtmlButtonResponse,
+//            stimulus: function() {
+//                // Retrieve the response from the previous trial
+//                const response = jsPsych.data.get().last(1).values()[0].comprehension_check1_response;
+//                
+//                // Change the displayed text based on the response
+//                if (response === 0) {
+//                    return `<p>You selected the correct response: 59!
+//                        <br><br> Please look at the example and explanation again on the next page to familiarize yourself with the display.</p>`;
+//                } else if (response === 1) {
+//                    return `<p>You selected 56. That was not the right answer. 
+//                        <br><br> You indicated the points the other person gets if you chose Option J. We were looking for what they get if you chose Option F.
+//                        <br> The points for the other person when you choose Option F are displayed in the box that says "Option F: Other gets". 
+//                        <br><br> Please look at the example and explanation again on the next page to familiarize yourself with the display.</p>`;
+//                } else if (response === 2) {
+//                    return `<p>You selected 22. That was not the right answer.
+//                            <br><br> You indicated the points you would get if you chose Option F. We were looking for what the other person would get.
+//                            <br> The points for the other person when you choose Option F are displayed in the box that says "Option F: Other gets".
+//                            <br><br> Please look at the example and explanation again on the next page to familiarize yourself with the display.</p>`;
+//                } else if (response === 3) {
+//                    return `<p>You selected 15. That was not the right answer.
+//                            <br><br> You indicated the points you get if you chose Option J. We were looking for what the other player would get if you chose Option F.
+//                            <br> The points for the other person when you choose Option F are displayed in the box that says "Option F: Other gets".
+//                            <br><br> Please look at the example and explanation again on the next page to familiarize yourself with the display.</p>`;
+//                } else {
+//                    return `<p>Invalid response. Please try again.</p>`;
+//                }
+//            },
+//            choices: ['Next'], 
+//        });
+//        timeline.push(comprehension_feedback1);
+//        timeline.push({
+//            timeline: [comprehension_check2],
+//            on_finish: function(data) {
+//                jsPsych.data.addProperties({ comprehension_check2_response: data.response}); // Log response
+//            }
+//        });
+//
+//        timeline.push({
+//            type: jsPsychHtmlButtonResponse,
+//            stimulus: function() {
+//                // Retrieve the response from the previous trial
+//                const response = jsPsych.data.get().last(1).values()[0].comprehension_check2_response;
+//                
+//                // Change the displayed text based on the response
+//                if (response === 0) {
+//                    return `<p>You selected the correct response: F!
+//                        <br><br> Please look at the example and explanation again on the next page to familiarize yourself with the display.</p>`;
+//                } else if (response === 1) {
+//                    return `<p>You selected J. That was not the right answer. 
+//                        <br><br> You indicated that the rule points to Option J. It actually points to Option F.
+//                        <br> The rule is displayed in the box with the titel "Rule" and indicates if you should choose option F or J. 
+//                        <br><br> Please look at the example and explanation again on the next page to familiarize yourself with the display.</p>`;
+//                 } else {
+//                    return `<p>Invalid response. Please try again.</p>`;
+//                }
+//            },
+//            choices: ['Next'], 
+//        });
+//        timeline.push(comprehension_feedback2);
+//        timeline.push({
+//            timeline: [comprehension_check3],
+//            on_finish: function(data) {
+//                jsPsych.data.addProperties({ comprehension_check3_response: data.response}); // Log response
+//            }
+//        });
+//
+//        timeline.push({
+//            type: jsPsychHtmlButtonResponse,
+//            stimulus: function() {
+//                // Retrieve the response from the previous trial
+//                const response = jsPsych.data.get().last(1).values()[0].comprehension_check3_response;
+//                
+//                // Change the displayed text based on the response
+//                if (response === 0) {
+//                    return `<p>You selected the correct response: 59! That was not the right answer. 
+//                        <br><br> You indicated the points you would get if you chose Option F. We were looking for what you get if you chose Option J.
+//                        <br> The points you get when you choose Option J are displayed in the box that says "Option J: You get". 
+//                        <br><br> Please look at the example and explanation again on the next page to familiarize yourself with the display.</p>`;
+//                } else if (response === 1) {
+//                    return `<p>You selected 56. That was not the right answer.
+//                            <br><br> You indicated the points the other player would get if you chose Option J. We were looking for what you would get.
+//                            <br> The points you get when you choose Option J are displayed in the box that says "Option J: You get". 
+//                        <br><br> Please look at the example and explanation again on the next page to familiarize yourself with the display.</p>`;
+//                } else if (response === 2) {
+//                    return `<p>You selected 22. That was not the right answer.
+//                            <br><br> You indicated the points you would get if you chose Option F. We were looking for what you would get if you chose Option J.
+//                        <br> The points you get when you choose Option J are displayed in the box that says "Option J: You get". 
+//                            <br><br> Please look at the example and explanation again on the next page to familiarize yourself with the display.</p>`;
+//                } else if (response === 3) {
+//                    return `<p>You selected the correct response:15!
+//                            <br><br> Please look at the example and explanation again on the next page to familiarize yourself with the display.</p>`;
+//                } else {
+//                    return `<p>Invalid response. Please try again.</p>`;
+//                }
+//            },
+//            choices: ['Next'], 
+//        });
+//        timeline.push(comprehension_feedback3);
+//// DICTATOR GAME
+//        timeline.push(calibration_instructions);
+//        timeline.push(init_camera);
+//        timeline.push(calibration);
+//        timeline.push(validation_instructions);
+//        timeline.push(validation);
+//        timeline.push(recalibrate);
+//        timeline.push(task_instructions);
+//        timeline.push(charity_prac_choice);
+//        timeline.push(EnterRealChoice);
+//        timeline.push(real_choice);
+//        timeline.push(donecursor);
+//
+//
+//        // lookcheck
+//        timeline.push(lookcheck_trial);
+//        timeline.push(selected_lookcheck);
+//
+//
+//        // other check
+//        timeline.push(visioncheck_trial);
+//
+//        // Social Norms Dictator Game
+//        timeline.push(sndg_intro);
+//        timeline.push(sndg_intro2);
+//        timeline.push(sndg_pageone);
+//
+//        // traffic light check 
+//       timeline.push(trafficlight_trial);
+//
+//
+//        // end
+//        timeline.push(feedback);
         timeline.push(success_guard);
         
         jsPsych.run(timeline);
