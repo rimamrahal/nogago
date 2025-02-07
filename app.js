@@ -98,7 +98,7 @@ app.post("/data", function (request, response) {
     request.setTimeout(0);
     // DATA_CSV = json2csv(request.body);
     data = request.body;
-    id = data[0].subject;
+    id = data[0].subject_id;
     console.log("id: ", id);
 
     // id = row[1].split(",")[Id_index];
