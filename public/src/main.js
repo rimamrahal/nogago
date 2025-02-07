@@ -1225,7 +1225,7 @@ var charity_prac_choice = {
   timeline: [
   fixation,
     {
-      type: jsPsychBinaryChoiceTableFour,
+      type: jsPsychBinaryChoiceTableFourPrac,
       stimulus: () => stimuli_data[charity_prac_choice_count],
       choices: ["F", "J"],
       realOrPrac: false,

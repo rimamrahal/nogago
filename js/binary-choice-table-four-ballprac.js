@@ -77,7 +77,7 @@ var jsPsychBinaryChoiceTableFourBallPrac = (function (jspsych) {
    * @author YOUR NAME
    * @see {@link https://DOCUMENTATION_URL DOCUMENTATION LINK TEXT}
    */
-  class BinaryChoiceTableFourBallPlugin {
+  class BinaryChoiceTableFourBallPracPlugin {
     constructor(jsPsych) {
       this.jsPsych = jsPsych;
     }
