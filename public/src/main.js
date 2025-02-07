@@ -31,7 +31,7 @@
        ]
     };
 
-    var fixation_duration = 1000;
+    var fixation_duration = 500;
     var successExp = false;
     var resize_screen = false;
 
@@ -177,8 +177,8 @@ var calibration = {
 var validation_instructions = {
   type: jsPsychHtmlKeyboardResponse,
   stimulus: `
-    <p>Let's do this again. </p>
-    <p>Keep your head still. Move your eyes to look at each dot.</p>
+    <p>Now we need to check the accuracy of the webcam. </p>
+    <p>Look at each dot until it goes away. Look with your eyes. Don’t move your head.</p>
     Press <b>SPACE</b> to continue!`,
   choices: [' '],
   post_trial_gap: 1000
@@ -301,7 +301,7 @@ var blank_screen = {
   type: jsPsychHtmlKeyboardResponse,
   stimulus: '',
   choices: "NO_KEYS",
-  trial_duration: 200
+  trial_duration: 250
 };
 
   
@@ -1321,7 +1321,7 @@ var charity_prac_choice = {
           ]
         }
       ],
-      loop_function: () => real_choice_counts < 60, // set number of trials here, you have 60 items
+      loop_function: () => real_choice_counts < 24, // set number of trials here, you have 60 items
     };
 
 
@@ -1537,12 +1537,13 @@ var feedback = {
 //        // Screening questions
 //        timeline.push(glasses_screening);
 //
-//        // Webcam test
-//        timeline.push(webcam_test_instructions);
-//        timeline.push(calibration_instructions);
-//        timeline.push(init_camera);
-//        timeline.push(calibration);
-//        timeline.push(donecursor);
+        // Webcam test
+        timeline.push(webcam_test_instructions);
+        timeline.push(calibration_instructions);
+        timeline.push(init_camera);
+        timeline.push(fixation_cali);
+        timeline.push(fixation1);
+        timeline.push(donecursor);
 //
 //        // Personal Norms Dictator Game
 //        timeline.push(pndg_intro);
@@ -1565,83 +1566,83 @@ var feedback = {
 //        timeline.push(SVO_trial_likert1);
 //        timeline.push(SVO_trial_likert2);
 //        // balls
-        timeline.push(ballintro);
-        timeline.push(ballintro2);
-
-        timeline.push({
-            timeline: [ballcheck1],
-            on_finish: function(data) {
-                jsPsych.data.addProperties({ ballcheck1_response: data.response}); // Log response
-            }
-        });
-        timeline.push({
-            type: jsPsychHtmlButtonResponse,
-            stimulus: function() {
-                // Retrieve the response from the previous trial
-                const response = jsPsych.data.get().last(1).values()[0].ballcheck1_response;
-                
-                // Change the displayed text based on the response
-                if (response === 0) {
-                    return `<p>You selected the correct response: 1000!
-                        <br><br> Please look at the example and explanation again on the next page to familiarize yourself with the display.</p>`;
-                } else if (response === 1) {
-                    return `<p>You selected 99. That was not the right answer. 
-                        <br><br> You indicated the random number assosciated with the ball. 
-                        <br> The payment assosciated with option J is displayed directly next to the letter J on the right of the screen. 
-                        <br><br> Please look at the example and explanation again on the next page to familiarize yourself with the display.</p>`;
-                } else if (response === 2) {
-                    return `<p>You selected 1. That was not the right answer.
-                            <br><br> You indicated the payment for putting the ball in bucket F.
-                            <br> The payment assosciated with option J is displayed directly next to the letter J on the right of the screen. 
-                            <br><br> Please look at the example and explanation again on the next page to familiarize yourself with the display.</p>`;
-                } else {
-                    return `<p>Invalid response. Please try again.</p>`;
-                }
-            },
-            choices: ['Next'], 
-        });
-        timeline.push(feedback_ballcheck1);
-        timeline.push({
-            timeline: [ballcheck2],
-            on_finish: function(data) {
-                jsPsych.data.addProperties({ ballcheck2_response: data.response}); // Log response
-            }
-        });
-        timeline.push({
-            type: jsPsychHtmlButtonResponse,
-            stimulus: function() {
-                // Retrieve the response from the previous trial
-                const response = jsPsych.data.get().last(1).values()[0].ballcheck2_response;
-                
-                // Change the displayed text based on the response
-                if (response === 0) {
-                    return `<p>You selected the correct response: F!
-                        <br><br> Please look at the example and explanation again on the next page to familiarize yourself with the display.</p>`;
-                } else if (response === 1) {
-                    return `<p>You selected J. That was not the right answer. 
-                        <br><br> The rule is displayed in the center of the screen. It tells you to put the ball in bucket F or J.  
-                        <br><br> Please look at the example and explanation again on the next page to familiarize yourself with the display.</p>`;
-                } else {
-                    return `<p>Invalid response. Please try again.</p>`;
-                }
-            },
-            choices: ['Next'], 
-        });
-        timeline.push(feedback_ballcheck2);
-// BALL GAME
-        timeline.push(ballintro3);
-        timeline.push(ball_prac_choice);
-        timeline.push(calibration_instructions);
-        timeline.push(init_camera);
-        timeline.push(calibration);
-        timeline.push(validation_instructions);
-        timeline.push(validation);
-        timeline.push(recalibrate);
-        timeline.push(ballEnterRealChoice);
-        timeline.push(ball_real_choice);
-        timeline.push(donecursor);
-
-
+//        timeline.push(ballintro);
+//        timeline.push(ballintro2);
+//
+//        timeline.push({
+//            timeline: [ballcheck1],
+//            on_finish: function(data) {
+//                jsPsych.data.addProperties({ ballcheck1_response: data.response}); // Log response
+//            }
+//        });
+//        timeline.push({
+//            type: jsPsychHtmlButtonResponse,
+//            stimulus: function() {
+//                // Retrieve the response from the previous trial
+//                const response = jsPsych.data.get().last(1).values()[0].ballcheck1_response;
+//                
+//                // Change the displayed text based on the response
+//                if (response === 0) {
+//                    return `<p>You selected the correct response: 1000!
+//                        <br><br> Please look at the example and explanation again on the next page to familiarize yourself with the display.</p>`;
+//                } else if (response === 1) {
+//                    return `<p>You selected 99. That was not the right answer. 
+//                        <br><br> You indicated the random number assosciated with the ball. 
+//                        <br> The payment assosciated with option J is displayed directly next to the letter J on the right of the screen. 
+//                        <br><br> Please look at the example and explanation again on the next page to familiarize yourself with the display.</p>`;
+//                } else if (response === 2) {
+//                    return `<p>You selected 1. That was not the right answer.
+//                            <br><br> You indicated the payment for putting the ball in bucket F.
+//                            <br> The payment assosciated with option J is displayed directly next to the letter J on the right of the screen. 
+//                            <br><br> Please look at the example and explanation again on the next page to familiarize yourself with the display.</p>`;
+//                } else {
+//                    return `<p>Invalid response. Please try again.</p>`;
+//                }
+//            },
+//            choices: ['Next'], 
+//        });
+//        timeline.push(feedback_ballcheck1);
+//        timeline.push({
+//            timeline: [ballcheck2],
+//            on_finish: function(data) {
+//                jsPsych.data.addProperties({ ballcheck2_response: data.response}); // Log response
+//            }
+//        });
+//        timeline.push({
+//            type: jsPsychHtmlButtonResponse,
+//            stimulus: function() {
+//                // Retrieve the response from the previous trial
+//                const response = jsPsych.data.get().last(1).values()[0].ballcheck2_response;
+//                
+//                // Change the displayed text based on the response
+//                if (response === 0) {
+//                    return `<p>You selected the correct response: F!
+//                        <br><br> Please look at the example and explanation again on the next page to familiarize yourself with the display.</p>`;
+//                } else if (response === 1) {
+//                    return `<p>You selected J. That was not the right answer. 
+//                        <br><br> The rule is displayed in the center of the screen. It tells you to put the ball in bucket F or J.  
+//                        <br><br> Please look at the example and explanation again on the next page to familiarize yourself with the display.</p>`;
+//                } else {
+//                    return `<p>Invalid response. Please try again.</p>`;
+//                }
+//            },
+//            choices: ['Next'], 
+//        });
+//        timeline.push(feedback_ballcheck2);
+//// BALL GAME
+//        timeline.push(ballintro3);
+//        timeline.push(ball_prac_choice);
+//        timeline.push(calibration_instructions);
+//        timeline.push(init_camera);
+//        timeline.push(calibration);
+//        timeline.push(validation_instructions);
+//        timeline.push(validation);
+//        timeline.push(recalibrate);
+//        timeline.push(ballEnterRealChoice);
+//        timeline.push(ball_real_choice);
+//        timeline.push(donecursor);
+//
+//
       // Dictator game
         timeline.push(choice_instructions1);
         timeline.push(choice_instructions2);
