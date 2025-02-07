@@ -295,6 +295,15 @@ var fixation = {
       params: {targets: ['#fix']}
     }]
 };
+
+// BLANK SCREEN
+var blank_screen = {
+  type: jsPsychHtmlKeyboardResponse,
+  stimulus: '',
+  choices: "NO_KEYS",
+  trial_duration: 200
+};
+
   
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -854,6 +863,7 @@ console.log(ball_data)
 var ball_prac_choice_count = 0;
 var ball_prac_choice = {
   timeline: [
+  blank_screen,
   fixation,
     {
       type: jsPsychBinaryChoiceTableFourBall,
@@ -906,7 +916,7 @@ var ball_prac_choice = {
     
   // RUN FIXATION CROSS FOR ALL TRIALS
   var ball_if_node2 = {
-    timeline: [fixation],
+    timeline: [blank_screen, fixation],
     conditional_function: function(){
         if(ball_real_choice_counts != 99){
             return true;
@@ -972,7 +982,7 @@ var ball_prac_choice = {
 var choice_instructions1 = {
   type: jsPsychHtmlKeyboardResponse,
   stimulus: `<div style="width: 80%; margin: auto;">
-  <p> In the next task, you will decide to give points to yourself and other participants in this study in multiple rounds. </p>
+  <p> In the next task, you will decide to give points to yourself and other participants in this study in 80 rounds. </p>
   For each decision, another participant is randomly matched with you. For each option, you will see <b>how many points you get</b>, and <b>how many points the other participant gets</b>. </p>
   <p> Each time, you have two options: Option F (on the left) and Option J (on the right). </p>
 
@@ -1215,6 +1225,7 @@ stimuli_data = jsPsych.randomization.shuffle(stimuli_data);
 var charity_prac_choice_count = 0;
 var charity_prac_choice = {
   timeline: [
+    blank_screen,
   fixation,
     {
       type: jsPsychBinaryChoiceTableFour,
@@ -1266,7 +1277,7 @@ var charity_prac_choice = {
       
     // RUN FIXATION CROSS FOR ALL TRIALS 
     var if_node2 = {
-      timeline: [fixation],
+      timeline: [blank_screen, fixation],
       conditional_function: function(){
           if(real_choice_counts != 99){
               return true;
