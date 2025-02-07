@@ -281,9 +281,9 @@ var jsPsychBinaryChoiceTableFourBallPrac = (function (jspsych) {
 
     }
   }
-  BinaryChoiceTableFourBallPlugin.info = info;
+  BinaryChoiceTableFourBallPracPlugin.info = info;
 
-  return BinaryChoiceTableFourBallPlugin;
+  return BinaryChoiceTableFourBallPracPlugin;
 })(jsPsychModule);
 
 
