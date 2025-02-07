@@ -864,7 +864,7 @@ var ball_prac_choice = {
   timeline: [
   fixation,
     {
-      type: jsPsychBinaryChoiceTableFourBallPrac,
+      type: jsPsychBinaryChoiceTableFourBall,
       stimulus: () => ball_data[ball_prac_choice_count],
       choices: ["F", "J"],
       realOrPrac: false,
@@ -1225,7 +1225,7 @@ var charity_prac_choice = {
   timeline: [
   fixation,
     {
-      type: jsPsychBinaryChoiceTableFourPrac,
+      type: jsPsychBinaryChoiceTableFour,
       stimulus: () => stimuli_data[charity_prac_choice_count],
       choices: ["F", "J"],
       realOrPrac: false,
@@ -1626,14 +1626,14 @@ var feedback = {
         });
         timeline.push(feedback_ballcheck2);
 // BALL GAME
-        timeline.push(ballintro3);
-        timeline.push(ball_prac_choice);
         timeline.push(calibration_instructions);
         timeline.push(init_camera);
         timeline.push(calibration);
         timeline.push(validation_instructions);
         timeline.push(validation);
         timeline.push(recalibrate);
+        timeline.push(ballintro3);
+        timeline.push(ball_prac_choice);
         timeline.push(ballEnterRealChoice);
         timeline.push(ball_real_choice);
         timeline.push(donecursor);
@@ -1752,14 +1752,14 @@ var feedback = {
 //        });
 //        timeline.push(comprehension_feedback3);
 //// DICTATOR GAME
-//        timeline.push(task_instructions);
-//        timeline.push(charity_prac_choice);
 //        timeline.push(calibration_instructions);
 //        timeline.push(init_camera);
 //        timeline.push(calibration);
 //        timeline.push(validation_instructions);
 //        timeline.push(validation);
 //        timeline.push(recalibrate);
+//        timeline.push(task_instructions);
+//        timeline.push(charity_prac_choice);
 //        timeline.push(dgEnterRealChoice);
 //        timeline.push(real_choice);
 //        timeline.push(donecursor);
