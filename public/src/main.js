@@ -1541,8 +1541,9 @@ var feedback = {
         timeline.push(webcam_test_instructions);
         timeline.push(calibration_instructions);
         timeline.push(init_camera);
-        timeline.push(fixation_cali);
-        timeline.push(fixation1);
+        timeline.push(calibration);
+        timeline.push(validation_instructions);
+        timeline.push(validation);
         timeline.push(recalibrate);
         timeline.push(donecursor);
 
