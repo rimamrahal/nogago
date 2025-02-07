@@ -919,7 +919,7 @@ var ball_prac_choice = {
     
   // RUN FIXATION CROSS FOR ALL TRIALS
   var ball_if_node2 = {
-    timeline: [blankscreen, fixationcross],
+    timeline: [fixationcross],
     conditional_function: function(){
         if(ball_real_choice_counts != 999){
             return true;
