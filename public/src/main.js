@@ -300,9 +300,14 @@ var fixationcross = {
     // BLANK SCREEN
     var blankscreen = {
       type: jsPsychHtmlKeyboardResponse,
-      stimulus: '<p id = "blank" style="font-size:40px;"> </p>',
+      stimulus: '<p id = "blank" style="font-size:1px;">+</p>',
       choices: "NO_KEYS",
-      trial_duration: blank_duration
+      trial_duration: blank_duration,
+      extensions: [
+        {
+          type: jsPsychExtensionWebgazer,
+          params: {targets: ['#blank']}
+        }]
     };
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
