@@ -864,7 +864,7 @@ var ball_prac_choice = {
   timeline: [
   fixation,
     {
-      type: jsPsychBinaryChoiceTableFourBall,
+      type: jsPsychBinaryChoiceTableFourBallPrac,
       stimulus: () => ball_data[ball_prac_choice_count],
       choices: ["F", "J"],
       realOrPrac: false,
