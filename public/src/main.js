@@ -1562,8 +1562,8 @@ var feedback = {
 //        timeline.push(SVO_trial_likert1);
 //        timeline.push(SVO_trial_likert2);
 //        // balls
-//        timeline.push(ballintro);
-//        timeline.push(ballintro2);
+        timeline.push(ballintro);
+        timeline.push(ballintro2);
 
         timeline.push({
             timeline: [ballcheck1],
