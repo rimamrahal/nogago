@@ -37,7 +37,7 @@
 
     var point_size = 50;
     var threshold = 0.7; // at least 70% of gazes must be inside a given ROI to be considered accurate (threshold)
-    var recalibrate_criterion = 0.2; // if at least 2 ROIs (2 points out of 9 total points shown = 0.22) are below the threshold set above, this will trigger recalibration in the initial validation phases (not while the task is running)
+    var recalibrate_criterion = 0.222; // if at least 2 ROIs (2 points out of 9 total points shown = 0.22) are below the threshold set above, this will trigger recalibration in the initial validation phases (not while the task is running)
     var calibration_mode = 'view';
 
     function closeFullscreen() {
@@ -212,7 +212,7 @@ var recalibrateInstruction = {
   type: jsPsychHtmlKeyboardResponse,
   stimulus: `
     <p>The accuracy of the webcam is a little lower than we'd like.</p>
-    <p>Let's try teaching the camera where you are looking one more time.</p>
+    <p>Please try teaching the camera where you are looking one more time. We planned some buffer time in the study for this case.</p>
     <br></br>
     <p>When you are ready, press the <b>SPACE BAR</b> to recalibrate.  </p>
   `,
@@ -398,7 +398,7 @@ const glasses_screening = {
       <p> You will make decisions about giving points to you and to this other person. 
       This person will not know whose choices will affect them. </p> 
       <p> 
-      In this task, you decide how many points to give to yourself and the other person by <b> selecting the button above the options </b>. 
+      In this task, you decide how many points to give to yourself and the other person by <b>selecting the button above the options</b>. 
       You can only choose one option for each question. </p>
       <p> The points are worth money, and will give both you and the other person an additional payment. </p>
       <p> Look at the example below. Someone chose the option to get 40 points for themselves. In this option, the anonymous other person gets 50 points.</p>
@@ -488,7 +488,7 @@ const glasses_screening = {
     <br><br> The standard is <b>your personal opinion, not to the opinion of others</b>.
     <br> There are no right or wrong answers. Please answer honestly.
           <br><br>
-          Press <b>SPACE</b> to begin!
+          Press <b>SPACE</b> to read about the situation in which the actions take place!
           </div>`,
       choices: [' ']
     };
@@ -496,13 +496,13 @@ const glasses_screening = {
     var pndg_intro2 = {
       type: jsPsychHtmlKeyboardResponse,
       stimulus: `
-      <div style="text-align: left;">In this study, from all participants, we will draw two random people (Person A and Person B). They are anonymous, so no one will know who they are.
+      <div style="text-align: left;">Imagine this situation: We will draw two random people (Person A and Person B) from all participants in this study. They are anonymous, so no one will know who they are.
     <br><br> Person A makes a decisions. Person B will learn what the situation was and what decision Person A made.
     <br> Person A's decision will be paid to themselves and to Person B as a bonus payment.
     <br><br> Person A has 100 points. 100 points are worth 0.30£. <b>Person A can give some or all of the 100 points to Person B.</b>
     <br> Whatever Person A gives, they keep the rest themselves.
        <br><br>
-       Press <b>SPACE</b> to move on!
+       Press <b>SPACE</b> to move on to evaluating the actions!
        </div> `,
       choices: [' ']
     };
@@ -561,7 +561,7 @@ var sndg_intro = {
     <br> At the end of the study, we will check which answers most people gave. 
     <br><b>When your answers is the same as the most common answer, you get 0.10£.</b> If all your answers match the most common answers, you get 1£. 
           <br><br>
-          Press <b>SPACE</b> to begin!
+          Press <b>SPACE</b> to read about the situation in which the actions take place!
           </div>`,
   choices: [' ']
 };
@@ -569,13 +569,13 @@ var sndg_intro = {
 var sndg_intro2 = {
   type: jsPsychHtmlKeyboardResponse,
   stimulus: `
-  <div style="text-align: left;">In this study, from all participants, we will draw two random people (Person A and Person B). They are anonymous, so no one will know who they are.
+  <div style="text-align: left;">Imagine this situation: We will draw two random people (Person A and Person B) from all participants in this study. They are anonymous, so no one will know who they are.
 <br><br> Person A makes a decisions. Person B will learn what the situation was and what decision Person A made.
 <br> Person A's decision will be paid to themselves and to Person B as a bonus payment.
 <br><br> Person A has 100 points. 100 points are worth 0.30£. <b>Person A can give some or all of the 100 points to Person B.</b>
 <br> Whatever Person A gives, they keep the rest themselves.
    <br><br>
-   Press <b>SPACE</b> to move on!
+   Press <b>SPACE</b> to move on to evaluating the actions!
    </div> `,
   choices: [' ']
 };
@@ -731,7 +731,7 @@ var ballintro2 = {
   <div style="width: 50vw; margin: auto; text-align:left;">
   <ul>
   <li>How many points you get if you choose Buckt F (left) or J (right).</li>
-  <li>If rule is to choose F(left) or J (right). </li>
+  <li>If rule is to choose F (left) or J (right). </li>
   <li>What random number the ball has.</li>
   </ul></p> 
   </div> </br> </br>
@@ -1045,8 +1045,8 @@ var choice_instructions3 = {
   <div style="width: 50vw; margin: auto; text-align:left;">
   <ul>
   <li>How many points you get if you choose Option F (left) or J (right).</li>
-  <li>How many points the other person get if you choose Option F(left) or J (right).</li> 
-  <li>If the majority rule is to choose F(left) or J (right). </li>
+  <li>How many points the other person get if you choose Option F (left) or J (right).</li> 
+  <li>If the majority rule is to choose F (left) or J (right). </li>
   <li>What random number the other person has.</li>
   </ul></p> 
   </div> </br> </br>
@@ -1506,7 +1506,7 @@ var feedback = {
         timeline.push(fullscreenEnter);
 
         // Screening questions
-//        timeline.push(glasses_screening);
+        timeline.push(glasses_screening);
 
         // Webcam test
         timeline.push(webcam_test_instructions);
@@ -1515,103 +1515,102 @@ var feedback = {
         timeline.push(calibration);
         timeline.push(donecursor);
 
-//        // Personal Norms Dictator Game
-//        timeline.push(pndg_intro);
-//        timeline.push(pndg_intro2);
-//        timeline.push(pndg_pageone);
-//
-//        // social norm espousal
-//        timeline.push(SNE_pageone);
-//        timeline.push(SNE_pagetwo);
-//        timeline.push(SNE_pagethree);
-//        timeline.push(SNE_pagefour);
-//
-//        // other check for buffer
-//        timeline.push(eslcheck_trial);
-//        timeline.push(country_survey_trial);
-//        timeline.push(demographics);
-//
-//        // SVO
-//        timeline.push(SVO_instruction);
-//        timeline.push(SVO_trial_likert1);
-//        timeline.push(SVO_trial_likert2);
+        // Personal Norms Dictator Game
+        timeline.push(pndg_intro);
+        timeline.push(pndg_intro2);
+        timeline.push(pndg_pageone);
 
-//        // balls
-//        timeline.push(ballintro);
-//        timeline.push(ballintro2);
-//
-//        timeline.push({
-//            timeline: [ballcheck1],
-//            on_finish: function(data) {
-//                jsPsych.data.addProperties({ ballcheck1_response: data.response}); // Log response
-//            }
-//        });
-//        timeline.push({
-//            type: jsPsychHtmlButtonResponse,
-//            stimulus: function() {
-//                // Retrieve the response from the previous trial
-//                const response = jsPsych.data.get().last(1).values()[0].ballcheck1_response;
-//                
-//                // Change the displayed text based on the response
-//                if (response === 0) {
-//                    return `<p>You selected the correct response: 1000!
-//                        <br><br> Please look at the example and explanation again on the next page to familiarize yourself with the display.</p>`;
-//                } else if (response === 1) {
-//                    return `<p>You selected 99. That was not the right answer. 
-//                        <br><br> You indicated the random number assosciated with the ball. 
-//                        <br> The payment assosciated with option J is displayed directly next to the letter J on the right of the screen. 
-//                        <br><br> Please look at the example and explanation again on the next page to familiarize yourself with the display.</p>`;
-//                } else if (response === 2) {
-//                    return `<p>You selected 1. That was not the right answer.
-//                            <br><br> You indicated the payment for putting the ball in bucket F.
-//                            <br> The payment assosciated with option J is displayed directly next to the letter J on the right of the screen. 
-//                            <br><br> Please look at the example and explanation again on the next page to familiarize yourself with the display.</p>`;
-//                } else {
-//                    return `<p>Invalid response. Please try again.</p>`;
-//                }
-//            },
-//            choices: ['Next'], 
-//        });
-//        timeline.push(feedback_ballcheck1);
-//        timeline.push({
-//            timeline: [ballcheck2],
-//            on_finish: function(data) {
-//                jsPsych.data.addProperties({ ballcheck2_response: data.response}); // Log response
-//            }
-//        });
-//        timeline.push({
-//            type: jsPsychHtmlButtonResponse,
-//            stimulus: function() {
-//                // Retrieve the response from the previous trial
-//                const response = jsPsych.data.get().last(1).values()[0].ballcheck2_response;
-//                
-//                // Change the displayed text based on the response
-//                if (response === 0) {
-//                    return `<p>You selected the correct response: F!
-//                        <br><br> Please look at the example and explanation again on the next page to familiarize yourself with the display.</p>`;
-//                } else if (response === 1) {
-//                    return `<p>You selected J. That was not the right answer. 
-//                        <br><br> The rule is displayed in the center of the screen. It tells you to put the ball in bucket F or J.  
-//                        <br><br> Please look at the example and explanation again on the next page to familiarize yourself with the display.</p>`;
-//                } else {
-//                    return `<p>Invalid response. Please try again.</p>`;
-//                }
-//            },
-//            choices: ['Next'], 
-//        });
-//        timeline.push(feedback_ballcheck2);
-//// BALL GAME
-//        timeline.push(calibration_instructions);
-//        timeline.push(init_camera);
-//        timeline.push(calibration);
-//        timeline.push(validation_instructions);
-//        timeline.push(validation);
-//        timeline.push(recalibrate);
-//        timeline.push(ballintro3);
-//        timeline.push(ball_prac_choice);
-//        timeline.push(EnterRealChoice);
-//        timeline.push(ball_real_choice);
-//        timeline.push(donecursor);
+        // social norm espousal
+        timeline.push(SNE_pageone);
+        timeline.push(SNE_pagetwo);
+        timeline.push(SNE_pagethree);
+        timeline.push(SNE_pagefour);
+
+        // other check for buffer
+        timeline.push(eslcheck_trial);
+        timeline.push(country_survey_trial);
+        timeline.push(demographics);
+
+        // SVO
+        timeline.push(SVO_instruction);
+        timeline.push(SVO_trial_likert1);
+        timeline.push(SVO_trial_likert2);
+        // balls
+        timeline.push(ballintro);
+        timeline.push(ballintro2);
+
+        timeline.push({
+            timeline: [ballcheck1],
+            on_finish: function(data) {
+                jsPsych.data.addProperties({ ballcheck1_response: data.response}); // Log response
+            }
+        });
+        timeline.push({
+            type: jsPsychHtmlButtonResponse,
+            stimulus: function() {
+                // Retrieve the response from the previous trial
+                const response = jsPsych.data.get().last(1).values()[0].ballcheck1_response;
+                
+                // Change the displayed text based on the response
+                if (response === 0) {
+                    return `<p>You selected the correct response: 1000!
+                        <br><br> Please look at the example and explanation again on the next page to familiarize yourself with the display.</p>`;
+                } else if (response === 1) {
+                    return `<p>You selected 99. That was not the right answer. 
+                        <br><br> You indicated the random number assosciated with the ball. 
+                        <br> The payment assosciated with option J is displayed directly next to the letter J on the right of the screen. 
+                        <br><br> Please look at the example and explanation again on the next page to familiarize yourself with the display.</p>`;
+                } else if (response === 2) {
+                    return `<p>You selected 1. That was not the right answer.
+                            <br><br> You indicated the payment for putting the ball in bucket F.
+                            <br> The payment assosciated with option J is displayed directly next to the letter J on the right of the screen. 
+                            <br><br> Please look at the example and explanation again on the next page to familiarize yourself with the display.</p>`;
+                } else {
+                    return `<p>Invalid response. Please try again.</p>`;
+                }
+            },
+            choices: ['Next'], 
+        });
+        timeline.push(feedback_ballcheck1);
+        timeline.push({
+            timeline: [ballcheck2],
+            on_finish: function(data) {
+                jsPsych.data.addProperties({ ballcheck2_response: data.response}); // Log response
+            }
+        });
+        timeline.push({
+            type: jsPsychHtmlButtonResponse,
+            stimulus: function() {
+                // Retrieve the response from the previous trial
+                const response = jsPsych.data.get().last(1).values()[0].ballcheck2_response;
+                
+                // Change the displayed text based on the response
+                if (response === 0) {
+                    return `<p>You selected the correct response: F!
+                        <br><br> Please look at the example and explanation again on the next page to familiarize yourself with the display.</p>`;
+                } else if (response === 1) {
+                    return `<p>You selected J. That was not the right answer. 
+                        <br><br> The rule is displayed in the center of the screen. It tells you to put the ball in bucket F or J.  
+                        <br><br> Please look at the example and explanation again on the next page to familiarize yourself with the display.</p>`;
+                } else {
+                    return `<p>Invalid response. Please try again.</p>`;
+                }
+            },
+            choices: ['Next'], 
+        });
+        timeline.push(feedback_ballcheck2);
+// BALL GAME
+        timeline.push(calibration_instructions);
+        timeline.push(init_camera);
+        timeline.push(calibration);
+        timeline.push(validation_instructions);
+        timeline.push(validation);
+        timeline.push(recalibrate);
+        timeline.push(ballintro3);
+        timeline.push(ball_prac_choice);
+        timeline.push(EnterRealChoice);
+        timeline.push(ball_real_choice);
+        timeline.push(donecursor);
 
 
       // Dictator game
