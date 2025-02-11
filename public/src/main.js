@@ -359,7 +359,7 @@ const glasses_screening = {
               <br>You can therefore only take part if you are NOT wearing glasses. 
               <br>It is ok to take part if you can take your glasses off now and still read very small print on the screen.
               <br><br> <div style="font-size: 10px !important;">If you cannot read this WITHOUT glasses, you cannot take part!</div> 
-              <br><br>Please be honest and indicate below if you can take part or not. If you cannot, you will still receive a payment of £0.10 for your time. We will redirect to back to Prolific.  
+              <br><br>Please be honest and indicate below if you can take part or not. If you cannot, you will still receive a payment of £0.10 (about 0.12€) for your time. We will redirect to back to Prolific.  
               <br><br><br>Please confirm that you are not wearing glasses and can proceed with this study.</p>
       `,
       choices: ['Not wearing glasses and can take part.', 'Wearing glasses and cannot take part.'],
@@ -422,7 +422,7 @@ const glasses_screening = {
         payoffs for yourself and another participant)
       will be implemented OR if the choice of another participant will be implemented for you. 
       <br> 
-      <b> 100 points are worth 0.30£.  </b>
+      <b> 100 points are worth 0.30£ (about 0.36€).  </b>
 
       </p>
       <br>
@@ -508,7 +508,7 @@ const glasses_screening = {
       <div style="text-align: left;">Imagine this situation: We will draw two random people (Person A and Person B) from all participants in this study. They are anonymous, so no one will know who they are.
     <br><br> Person A makes a decisions. Person B will learn what the situation was and what decision Person A made.
     <br> Person A's decision will be paid to themselves and to Person B as a bonus payment.
-    <br><br> Person A has 100 points. 100 points are worth 0.30£. <b>Person A can give some or all of the 100 points to Person B.</b>
+    <br><br> Person A has 100 points. 100 points are worth 0.30£ (about 0.36€). <b>Person A can give some or all of the 100 points to Person B.</b>
     <br> Whatever Person A gives, they keep the rest themselves.
        <br><br>
        Press <b>SPACE</b> to move on to evaluating the actions!
@@ -568,7 +568,7 @@ var sndg_intro = {
     <br> Please answer as precisely as you can.
     <br><br> In this part, you can earn a bonus payment. How much you get depends on your and the other participants' answers.
     <br> At the end of the study, we will check which answers most people gave. 
-    <br><b>When your answers is the same as the most common answer, you get 0.10£.</b> If all your answers match the most common answers, you get 1£. 
+    <br><b>When your answers is the same as the most common answer, you get 0.10£ (about 0.12€).</b> If all your answers match the most common answers, you get 1£ (about 1.21€). 
           <br><br>
           Press <b>SPACE</b> to read about the situation in which the actions take place!
           </div>`,
@@ -581,7 +581,7 @@ var sndg_intro2 = {
   <div style="text-align: left;">Imagine this situation: We will draw two random people (Person A and Person B) from all participants in this study. They are anonymous, so no one will know who they are.
 <br><br> Person A makes a decisions. Person B will learn what the situation was and what decision Person A made.
 <br> Person A's decision will be paid to themselves and to Person B as a bonus payment.
-<br><br> Person A has 100 points. 100 points are worth 0.30£. <b>Person A can give some or all of the 100 points to Person B.</b>
+<br><br> Person A has 100 points. 100 points are worth 0.30£ (about 0.36€). <b>Person A can give some or all of the 100 points to Person B.</b>
 <br> Whatever Person A gives, they keep the rest themselves.
    <br><br>
    Press <b>SPACE</b> to move on to evaluating the actions!
@@ -606,7 +606,7 @@ type: jsPsychSurveyLikert,
 preamble: `
 <br> Please evaluate the possible actions of Person A. Scroll down to see all possible actions. 
 <br> 
-<br> Remember to evaluate according to the <b>opinion of the society</b> and not your own opinion. <br>You will earn 0.10£ for each answer that is the same as the <b>most common answer</b> among all participants.
+<br> Remember to evaluate according to the <b>opinion of the society</b> and not your own opinion. <br>You will earn 0.10£ (about 0.12€) for each answer that is the same as the <b>most common answer</b> among all participants.
 </div>`,
 questions: [
  {prompt: "A gives B 0 points.", name: 'sndg0', labels: sndg_scale_labels, required: true},
@@ -712,7 +712,7 @@ const ballintro = {
           <br><br>
           The rule in which bucket to put the ball (Bucket F or Bucket J) will be displayed.
           <br><br>
-          Your earnings from this part will be based on your decisions: it is the sum of earnings from the F and J buckets. 100 points are worth 0.01£. 
+          Your earnings from this part will be based on your decisions: it is the sum of earnings from the F and J buckets. 100 points are worth 0.01£ (about 0.01€). 
           <br><br>Click 'Next' to proceed to some questions testing your understanding of these instructions.
       </p>
   `,
@@ -997,7 +997,7 @@ var choice_instructions1 = {
   one of your own decisions is randomly chosen to be paid out to you and the other player. </br>
   OR </br>
   someone else's decision is randomly chosen to be paid out, and you receive what they decided. </p></br>
-  <p> 100 points are worth 0.30£. Each decision you make has the same chance to be picked to be paid out.<p/> 
+  <p> 100 points are worth 0.30£ (about 0.36€). Each decision you make has the same chance to be picked to be paid out.<p/> 
 
   <p>Press <b>SPACE</b> to continue!</p>
   </div>
@@ -1335,7 +1335,7 @@ var charity_prac_choice = {
           type: jsPsychHtmlButtonResponse,
           stimulus: function() {
             return `
-             <p>In the next task, you have 100 points that are worth 0.30£.</p> 
+             <p>In the next task, you have 100 points that are worth 0.30£ (about 0.36€).</p> 
              <p>You can keep these points to yourself, or you can give some or all of the points to another participant in this study. </p>
              <p>There is either a rule that you should keep the 100 points to yourself or that you should give some of the points to the other participant.</p>
              <p><strong>Would you like to know what the rule is?</strong></p>`;
